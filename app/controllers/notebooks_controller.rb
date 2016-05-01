@@ -1,10 +1,16 @@
 class NotebooksController < ApplicationController
   before_action :set_notebook, only: [:show, :edit, :update]
+
+  def index
+    @notebooks = Notebook.all
+  end
+
   def show
   end
 
   def new
     @notebook = Notebook.new
+    @notebook.notes.build
   end
 
   def edit
@@ -30,7 +36,7 @@ class NotebooksController < ApplicationController
   private
 
   def notebook_params
-    params.require(:notebook).permit(:title)
+    params.require(:notebook).permit(:title, notes_attributes: [:id, :content])
   end
 
   def set_notebook

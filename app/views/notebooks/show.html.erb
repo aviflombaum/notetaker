@@ -2,3 +2,9 @@
 
 <%= @notebook.title %>
 </h3>
+
+<p>
+  <% @notebook.notes.each do |note|  %>
+    <%= note.content %>
+  <% end %>
+</p>
