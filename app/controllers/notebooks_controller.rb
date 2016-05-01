@@ -1,5 +1,5 @@
 class NotebooksController < ApplicationController
-  before_action :set_notebook, only: [:show, :edit, :update]
+  before_action :set_notebook, only: [:show, :edit, :update, :destroy]
 
   def index
     @notebooks = Notebook.all
@@ -31,6 +31,11 @@ class NotebooksController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @notebook.destroy
+    redirect_to notebooks_path
   end
 
   private

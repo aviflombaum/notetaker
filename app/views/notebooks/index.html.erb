@@ -1,7 +1,5 @@
 <h1>Your Notebooks</h1>
 
 <% @notebooks.each do |book| %>
-  <p>
-    <%= book.title %>
-  </p>
+  <h2><%= link_to book.title, notebook_path(book) %></h2>
 <% end %>
