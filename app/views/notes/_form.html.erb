@@ -5,6 +5,10 @@
   </div>
 
   <div class="form-group">
+    <%= f.collection_select(:reference_id, Reference.all, :id, :reference_link) %>
+  </div>
+
+  <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name %>
   </div>

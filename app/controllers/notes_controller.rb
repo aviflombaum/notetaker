@@ -29,7 +29,7 @@ class NotesController < ApplicationController
   private
 
     def note_params
-      params.require(:note).permit(:name, :content, :notebook_id)
+      params.require(:note).permit(:name, :content, :notebook_id, :reference_id)
     end
 
     def set_note

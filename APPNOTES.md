@@ -61,3 +61,11 @@ notes belong to a reference
 2.2.3 :004 > ref.notes.build(name: "note name", content: "note content", notebook_id: nb.id)
 2.2.3 :006 > nb.notes.last
 2.2.3 :007 > nb.notes.last.reference
+
+
+Access thing from notes
+Comments:
+  <% @post.comments.each do |comment| %>
+    <%= link_to comment.user.username, user_path(comment.user) %> said
+    <%= comment.content %>
+  <% end %> ---COMMENT IS THE JOIN TABLE
