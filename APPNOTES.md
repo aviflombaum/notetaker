@@ -1,12 +1,14 @@
-REQUIREMENTS:
+REQUIREMENTS - DONE:
 1) has_many, a belongs_to, and a has_many :through relationship --DONE
-2) Join model needs an additional attribute aside from ids
-3) models need validations --DONE
-4) At least 1 class level ActiveRecord scope method - report, overdue tasks, most valued cart, etc
-5) Nested form that writes to an associated model through a custom attribute writer. ---NOTEBOOK/TOPIC
-6) Standard User authentication - Devise & OmniAuth
-7) Nested resource with appropriate urls & Form that relates to the parent resource --DONE
-8) Forms correctly display validation errors - fields should be enclosed within a fields_with_errors
+2) models need validations --DONE
+3) Nested resource with appropriate urls & Form that relates to the parent resource --DONE
+
+REQUIREMENTS - TO DO:
+1) Join model needs an additional attribute aside from ids
+2) At least 1 class level ActiveRecord scope method - report, overdue tasks, most valued cart, etc
+3) Nested form that writes to an associated model through a custom attribute writer. ---NOTEBOOK/TOPIC
+4) Standard User authentication - Devise & OmniAuth
+5) Forms correctly display validation errors - fields should be enclosed within a fields_with_errors
 
 
 Associations:
@@ -31,7 +33,18 @@ Routes:
 
 
 
-"notebook"=>{
-  "title"=>"field notes",
-  "note"=>{
-    "content"=>"field notes content"}}
+custom attr writer example
+def categories_attributes=(categories_hashes)
+  categories_hashes.each do |i, category_attributes|
+    self.categories.find_or_create_by(name: category_attributes[:name])
+  end
+end
+
+
+each notebook has many resources
+each resource has many notebooks
+
+each notebook_resource has a topic
+
+make join table like comments
+comments join an existing user with an existing post

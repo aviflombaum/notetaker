@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :references
   resources :notes
   resources :notebooks do
     resources :notes, only: [:new, :show]
