@@ -2,13 +2,14 @@ REQUIREMENTS - DONE:
 1) has_many, a belongs_to, and a has_many :through relationship --DONE
 2) models need validations --DONE
 3) Nested resource with appropriate urls & Form that relates to the parent resource --DONE
+4) Join model needs an additional attribute aside from ids -- DONE
+
 
 REQUIREMENTS - TO DO:
-1) Join model needs an additional attribute aside from ids
-2) At least 1 class level ActiveRecord scope method - report, overdue tasks, most valued cart, etc
-3) Nested form that writes to an associated model through a custom attribute writer. ---NOTEBOOK/TOPIC
-4) Standard User authentication - Devise & OmniAuth
-5) Forms correctly display validation errors - fields should be enclosed within a fields_with_errors
+1) At least 1 class level ActiveRecord scope method - report, overdue tasks, most valued cart, etc
+2) Nested form that writes to an associated model through a custom attribute writer. ---NOTEBOOK/TOPIC
+3) Standard User authentication - Devise & OmniAuth
+4) Forms correctly display validation errors - fields should be enclosed within a fields_with_errors
 
 
 Associations:
