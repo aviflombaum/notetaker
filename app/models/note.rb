@@ -2,6 +2,9 @@ class Note < ActiveRecord::Base
   belongs_to :notebook
   belongs_to :reference
 
+  validates :name, :presence => true
+  validates :content, :presence => true
+
   # CHANGE TO CUSTOM ATTR WRITERS
 
   def notebooks_attributes=(notebooks_hashes)
@@ -16,5 +19,4 @@ class Note < ActiveRecord::Base
     end
   end
 
-  validates_presence_of :name, :content
 end

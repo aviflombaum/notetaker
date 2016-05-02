@@ -3,6 +3,9 @@
   <div class="form-group">
     <%= f.label :reference_link %>
     <%= f.text_field :reference_link %>
+    <% if @reference.errors[:reference_link].any?  %>
+      <p class="has-error"> <%= @reference.errors.full_messages_for(:reference_link).to_sentence %> </p>
+    <% end %>
   </div>
 
   <%= f.submit %>

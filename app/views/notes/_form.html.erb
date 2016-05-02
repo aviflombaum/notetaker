@@ -1,5 +1,6 @@
 <%= form_for(@note) do |f| %>
 
+
   <div class="form-group">
     <%= f.collection_select(:notebook_id, Notebook.all, :id, :title) %>
   </div>
@@ -11,11 +12,19 @@
   <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name %>
+
+      <% if @note.errors[:name].any?  %>
+        <p class="has-error"> <%= @note.errors.full_messages_for(:name).to_sentence %> </p>
+      <% end %>
   </div>
 
   <div class="form-group">
       <%= f.label :content %>
       <%= f.text_field :content %>
+
+      <% if @note.errors[:content].any?  %>
+        <p class="has-error"> <%= @note.errors.full_messages_for(:content).to_sentence %> </p>
+      <% end %>
   </div>
 
   <%= f.submit %>

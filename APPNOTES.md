@@ -3,13 +3,12 @@ REQUIREMENTS - DONE:
 2) models need validations --DONE
 3) Nested resource with appropriate urls & Form that relates to the parent resource --DONE
 4) Join model needs an additional attribute aside from ids -- DONE
-
+5) Nested form that writes to an associated model through a custom attribute writer. ---NOTEBOOK/TOPIC
 
 REQUIREMENTS - TO DO:
 1) At least 1 class level ActiveRecord scope method - report, overdue tasks, most valued cart, etc
-2) Nested form that writes to an associated model through a custom attribute writer. ---NOTEBOOK/TOPIC
-3) Standard User authentication - Devise & OmniAuth
-4) Forms correctly display validation errors - fields should be enclosed within a fields_with_errors
+2) Standard User authentication - Devise & OmniAuth
+3) Forms correctly display validation errors - fields should be enclosed within a fields_with_errors
 
 
 Associations:
@@ -21,7 +20,7 @@ Associations:
 Routes:
 /notebooks
 /notebooks/new
-/notebooks/:id ???
+/notebooks/:id 
 
 /notebooks/:id/notes
 /notebooks/:id/notes/new

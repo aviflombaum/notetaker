@@ -1,13 +1,16 @@
 class NotesController < ApplicationController
+  before_action :set_note, only: [:show, :edit, :update, :destroy] #add edit
+
 
   def show
-    set_note
-
-    @notebook = Notebook.find_by(params[:notebook_id])
+      @notebook = Notebook.find_by(params[:notebook_id])
   end
 
   def new
     @note = Note.new
+  end
+
+  def edit
   end
 
   def create
@@ -16,12 +19,19 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to notebook_path(@notebook)
     else
-      render "notebooks/show"
+      render :new
+    end
+  end
+
+  def update
+    if @note.update(note_params)
+      redirect_to note_path(@note)
+    else
+      render :edit
     end
   end
 
   def destroy
-    set_note
     @note.destroy
     redirect_to notebooks_path(@notebook)
   end
