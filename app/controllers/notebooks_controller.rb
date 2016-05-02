@@ -41,7 +41,7 @@ class NotebooksController < ApplicationController
     private
 
       def notebook_params
-        params.require(:notebook).permit(:title, notes_attributes: [:id, :content])
+        params.require(:notebook).permit(:title, notes_attributes: [:id, :name, :content])
       end
 
       def set_notebook

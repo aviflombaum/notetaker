@@ -1,7 +1,12 @@
 <%= form_for(@note) do |f| %>
 
   <div class="form-group">
-    <%= f.collection_select :notebook_id, Notebook.all, :id, :title %>
+    <%= f.collection_select(:notebook_id, Notebook.all, :id, :title) %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
   </div>
 
   <div class="form-group">

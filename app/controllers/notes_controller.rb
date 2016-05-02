@@ -1,5 +1,11 @@
 class NotesController < ApplicationController
 
+  def show
+    set_note
+
+    @notebook = Notebook.find_by(params[:notebook_id])
+  end
+
   def new
     @note = Note.new
   end
@@ -15,6 +21,7 @@ class NotesController < ApplicationController
   end
 
   def destroy
+    set_note
     @note.destroy
     redirect_to notebooks_path(@notebook)
   end
@@ -22,7 +29,7 @@ class NotesController < ApplicationController
   private
 
     def note_params
-      params.require(:note).permit(:content, :notebook_id)
+      params.require(:note).permit(:name, :content, :notebook_id)
     end
 
     def set_note

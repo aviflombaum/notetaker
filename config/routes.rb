@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :notes
-  resources :notebooks
+  resources :notebooks do
+    resources :notes, only: [:new, :show]
+  end
   devise_for :users
   root 'site#index'
 
