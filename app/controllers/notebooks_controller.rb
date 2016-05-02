@@ -33,18 +33,18 @@ class NotebooksController < ApplicationController
     end
   end
 
-  def destroy
-    @notebook.destroy
-    redirect_to notebooks_path
-  end
+    def destroy
+      @notebook.destroy
+      redirect_to notebooks_path
+    end
 
-  private
+    private
 
-  def notebook_params
-    params.require(:notebook).permit(:title, notes_attributes: [:id, :content])
-  end
+      def notebook_params
+        params.require(:notebook).permit(:title, notes_attributes: [:id, :content])
+      end
 
-  def set_notebook
-    @notebook = Notebook.find(params[:id])
-  end
+      def set_notebook
+        @notebook = Notebook.find(params[:id])
+      end
 end
