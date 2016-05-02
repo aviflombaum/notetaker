@@ -48,3 +48,16 @@ each notebook_resource has a topic
 
 make join table like comments
 comments join an existing user with an existing post
+
+
+<%= link_to 'Add a Note', new_notebook_note_path(@notebook, @note), :class => "btn btn-small btn-default" %>
+
+notebooks have many references through notes
+references have many references through notes
+notes belong to a notebook
+notes belong to a reference
+
+
+2.2.3 :004 > ref.notes.build(name: "note name", content: "note content", notebook_id: nb.id)
+2.2.3 :006 > nb.notes.last
+2.2.3 :007 > nb.notes.last.reference
