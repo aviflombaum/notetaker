@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :notebooks do
     resources :notes, only: [:new, :show]
   end
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root 'site#index'
 
 

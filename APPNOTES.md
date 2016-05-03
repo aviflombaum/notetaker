@@ -20,7 +20,7 @@ Associations:
 Routes:
 /notebooks
 /notebooks/new
-/notebooks/:id 
+/notebooks/:id
 
 /notebooks/:id/notes
 /notebooks/:id/notes/new
@@ -69,3 +69,16 @@ Comments:
     <%= link_to comment.user.username, user_path(comment.user) %> said
     <%= comment.content %>
   <% end %> ---COMMENT IS THE JOIN TABLE
+
+
+OMNIAUTH FLOW:
+
+1) the user goes to /auth/facebook on my site
+2) omniauth redirects them to fb, providing fb with the key and secret identifying my Application
+3) the user logs in with fb
+4) fb redirects them back to my app (callback url) and provides my app with a secret code that represents the user on fb
+5) my app sends the secret code back to fb
+6) fb confirms that the code came from fb and that my app received it
+7) fb sends me back the user's data
+8) i check if the user existis in my system by email, if so - log them in
+9) otherwise, create a user based on their email and log them in

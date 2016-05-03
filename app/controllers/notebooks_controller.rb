@@ -1,4 +1,5 @@
 class NotebooksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_notebook, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,6 +19,7 @@ class NotebooksController < ApplicationController
 
   def create
     @notebook = Notebook.new(notebook_params)
+    @notebook.user_id = current_user.id
     if @notebook.save
       redirect_to notebook_path(@notebook)
     else

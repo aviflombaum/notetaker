@@ -1,4 +1,7 @@
 class ReferencesController < ApplicationController
+  before_action :authenticate_user!
+
+
   def index
     @references = Reference.all
   end

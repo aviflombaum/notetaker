@@ -28,6 +28,9 @@ gem 'devise'
 gem 'rspec', '~> 3.4'
 gem 'omniauth', '~> 1.3', '>= 1.3.1'
 gem 'sqreen'
+gem 'omniauth-facebook'
+gem "figaro"
+
 
 
 # Use ActiveModel has_secure_password
