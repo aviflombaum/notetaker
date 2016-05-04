@@ -1,9 +1,5 @@
-<%= form_for(@note) do |f| %>
-
-
-  <div class="form-group">
-    <%= f.collection_select(:notebook_id, Notebook.all, :id, :title) %>
-  </div>
+<%= form_for(note) do |f| %>
+<%= f.hidden_field :notebook_id %>
 
   <div class="form-group">
     <%= f.collection_select(:reference_id, Reference.all, :id, :reference_link) %>

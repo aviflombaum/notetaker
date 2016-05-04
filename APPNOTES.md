@@ -1,14 +1,16 @@
 REQUIREMENTS - DONE:
 1) has_many, a belongs_to, and a has_many :through relationship --DONE
 2) models need validations --DONE
-3) Nested resource with appropriate urls & Form that relates to the parent resource --DONE
+
 4) Join model needs an additional attribute aside from ids -- DONE
 5) Nested form that writes to an associated model through a custom attribute writer. ---NOTEBOOK/TOPIC
+6) Standard User authentication - Devise & OmniAuth
+7) Forms correctly display validation errors - fields should be enclosed within a fields_with_errors
+
 
 REQUIREMENTS - TO DO:
 1) At least 1 class level ActiveRecord scope method - report, overdue tasks, most valued cart, etc
-2) Standard User authentication - Devise & OmniAuth
-3) Forms correctly display validation errors - fields should be enclosed within a fields_with_errors
+3) Nested resource with appropriate urls & Form that relates to the parent resource 
 
 
 Associations:
@@ -80,5 +82,8 @@ OMNIAUTH FLOW:
 5) my app sends the secret code back to fb
 6) fb confirms that the code came from fb and that my app received it
 7) fb sends me back the user's data
-8) i check if the user existis in my system by email, if so - log them in
+8) i check if the user exists in my system by email, if so - log them in
 9) otherwise, create a user based on their email and log them in
+
+
+  <%= link_to "Delete", @note, method: :delete, data: {confirm: "Are you sure you want to delete this note?"}, :class => "btn btn-small btn-default" %>

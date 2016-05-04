@@ -1,23 +1,21 @@
 class NotesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_note, only: [:show, :edit, :update, :destroy] #add edit
+  before_action :set_note, only: [:show, :edit, :update, :destroy]
 
   def show
-      @notebook = Notebook.find_by(params[:notebook_id])
+    @notebook = Notebook.find_by(params[:notebook_id])
   end
 
   def new
-    @note = Note.new
+    @note = Note.new(notebook_id: params[:notebook_id])
   end
 
   def edit
   end
 
   def create
-    @notebook = Notebook.find_by(params[:notebook_id])
-    @note = @notebook.notes.build(note_params)
+    @note = Note.new(note_params)
     if @note.save
-      redirect_to notebook_path(@notebook)
+      redirect_to @note
     else
       raise params.inspect
       render :new

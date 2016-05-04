@@ -5,10 +5,10 @@
           <h5>Notebook: <%= @note.notebook.title %>  </h5> <!-- change to link to notebook -->
       <div class="inline">
         <%= link_to 'Back', notebooks_path, :class => "btn btn-small btn-default" %>
-        <%= link_to 'Edit', edit_note_path(@note), :class => "btn btn-small btn-default" %>
+        <%= link_to 'Edit', edit_notebook_path(@notebook, @note), :class => "btn btn-small btn-default" %>
 
 
-        <%= link_to "Delete", @note, method: :delete, data: {confirm: "Are you sure you want to delete this note?"}, :class => "btn btn-small btn-default" %>
+
 
         <h5>
           <%= @note.reference.reference_link %>

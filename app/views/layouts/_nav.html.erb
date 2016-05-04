@@ -1,12 +1,9 @@
-
-
 <div class="nav">
   <ul class="nav nav-pills">
 
     <% if user_signed_in? %>
       <li role="presentation" ><%= link_to 'All Notebooks', notebooks_path %></li>
       <li role="presentation"><%= link_to 'New Notebook', new_notebook_path %></li>
-      <li role="presentation"><%= link_to 'New Note', new_note_path %></li>
       <li role="presentation"><%= link_to 'New Reference', new_reference_path %></li>
       <li role="presentation"><%= link_to 'Log Out', destroy_user_session_path %></li>
     <% else %>

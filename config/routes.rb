@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  resources :references
-  resources :notes
+
   resources :notebooks do
-    resources :notes, only: [:new, :show]
+    resources :notes, only: [:show, :new, :edit]
   end
+  resources :notes
+
+  resources :references, only: [:index, :new, :show]
+
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root 'site#index'
 
