@@ -1,7 +1,6 @@
 class ReferencesController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
     @references = Reference.all
   end
@@ -17,8 +16,10 @@ class ReferencesController < ApplicationController
   def create
     @reference = Reference.new(reference_params)
     if @reference.save
+      flash[:success] = "Reference created!"
       redirect_to reference_path(@reference)
     else
+      flash[:error] = "Could not create reference. Try again"
       render :new
     end
   end

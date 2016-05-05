@@ -1,26 +1,19 @@
-<%= form_for(note) do |f| %>
-<%= f.hidden_field :notebook_id %>
+<%= form_for note do |f| %>
+  <%= notebook_select(@nested, @note) %>
 
   <div class="form-group">
-    <%= f.collection_select(:reference_id, Reference.all, :id, :reference_link) %>
+    <%= f.label :reference_link %>
+    <%= f.select :reference_id, Reference.all.collect { |r| [r.reference_link, r.id]}, include_blank: :true %>
   </div>
 
   <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name %>
-
-      <% if @note.errors[:name].any?  %>
-        <p class="has-error"> <%= @note.errors.full_messages_for(:name).to_sentence %> </p>
-      <% end %>
   </div>
 
   <div class="form-group">
       <%= f.label :content %>
-      <%= f.text_field :content %>
-
-      <% if @note.errors[:content].any?  %>
-        <p class="has-error"> <%= @note.errors.full_messages_for(:content).to_sentence %> </p>
-      <% end %>
+      <%= f.text_area :content %>
   </div>
 
   <%= f.submit %>

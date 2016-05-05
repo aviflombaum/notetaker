@@ -19,4 +19,9 @@ class Note < ActiveRecord::Base
     end
   end
 
+
+  def self.without_a_reference
+    where(reference_id: nil)
+  end
+
 end

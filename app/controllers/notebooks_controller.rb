@@ -7,12 +7,11 @@ class NotebooksController < ApplicationController
   end
 
   def show
-    @note = Note.new
   end
 
   def new
     @notebook = Notebook.new
-    @notebook.notes.build
+    @note = @notebook.notes.build
   end
 
   def edit
@@ -22,8 +21,10 @@ class NotebooksController < ApplicationController
     @notebook = Notebook.new(notebook_params)
     @notebook.user_id = current_user.id
     if @notebook.save
+      flash[:success] = "Notebook created!"
       redirect_to notebook_path(@notebook)
     else
+      flash[:error] = "Could not create Notebook. Try again"
       render :new
     end
   end

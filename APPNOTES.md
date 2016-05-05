@@ -1,16 +1,24 @@
 REQUIREMENTS - DONE:
 1) has_many, a belongs_to, and a has_many :through relationship --DONE
 2) models need validations --DONE
-
+3) Nested resource with appropriate urls & Form that relates to the parent resource
 4) Join model needs an additional attribute aside from ids -- DONE
 5) Nested form that writes to an associated model through a custom attribute writer. ---NOTEBOOK/TOPIC
 6) Standard User authentication - Devise & OmniAuth
 7) Forms correctly display validation errors - fields should be enclosed within a fields_with_errors
+8) change datatype for references - ADDED VALIDATION IN MODEL
+9) change field type for :content
+10) partials
+11) Logout gets routing error
+12) Move Errors to flash messages in controller
+13) /notebooks isn't working
+
 
 
 REQUIREMENTS - TO DO:
 1) At least 1 class level ActiveRecord scope method - report, overdue tasks, most valued cart, etc
-3) Nested resource with appropriate urls & Form that relates to the parent resource 
+2) first note in notebook isn't being created in the notebook/new
+
 
 
 Associations:

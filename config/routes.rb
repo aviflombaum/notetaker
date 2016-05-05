@@ -4,9 +4,7 @@ Rails.application.routes.draw do
     resources :notes, only: [:show, :new, :edit]
   end
   resources :notes
-
   resources :references, only: [:index, :new, :show]
-
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root 'site#index'
 

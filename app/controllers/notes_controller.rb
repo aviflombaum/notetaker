@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
   def show
@@ -6,26 +7,46 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = Note.new(notebook_id: params[:notebook_id])
+    if params[:notebook_id] && !Notebook.exists?(params[:notebook_id])
+      redirect_to notebooks_path, alert: "Notebook not found."
+    else
+      @note = Note.new(notebook_id: params[:notebook_id])
+    end
   end
 
   def edit
+    if params[:notebook_id]
+      @nested = true
+      notebook = Notebook.find_by(id: params[:notebook_id])
+      if notebook.nil?
+        redirect_to notebooks_path, alert: "Notebook not found."
+      else
+        @note = notebook.notes.find_by(id: params[:id])
+        redirect_to notebook_notes_path(notebook), alert: "Note not found." if @note.nil?
+      end
+    else
+      @note = Note.find(params[:id])
+    end
   end
 
   def create
     @note = Note.new(note_params)
     if @note.save
+      flash[:success] = "Note created!"
       redirect_to @note
     else
-      raise params.inspect
+      flash[:error] = "Could not create note. Try again"
       render :new
     end
   end
 
   def update
-    if @note.update(note_params)
-      redirect_to note_path(@note)
+    @note.update(note_params)
+    if @note.save
+      flash[:success] = "Note updated!"
+      redirect_to @note
     else
+      flash[:error] = "Could not update note. Try again"
       render :edit
     end
   end
