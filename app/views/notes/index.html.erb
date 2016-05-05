@@ -1,0 +1,6 @@
+<div class="row">
+  <h3>These notes need references.</h3>
+  <% @notes.without_a_reference.each do |note| %>
+    <h4> <%= note.notebook.title %> -  <%= note.name %> </h4>
+  <% end %>
+</div>

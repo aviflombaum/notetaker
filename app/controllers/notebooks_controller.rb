@@ -2,6 +2,7 @@ class NotebooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_notebook, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @notebooks = Notebook.all
   end
@@ -15,6 +16,9 @@ class NotebooksController < ApplicationController
   end
 
   def edit
+    if @notebook.user_id != current_user.id
+      redirect_to notebooks_path, alert: "You are not the owner of this notebook."
+    end
   end
 
   def create
@@ -38,6 +42,9 @@ class NotebooksController < ApplicationController
   end
 
     def destroy
+      if @notebook.user_id != current_user.id
+        redirect_to notebooks_path, alert: "You are not the owner of this notebook."
+      end
       @notebook.destroy
       redirect_to notebooks_path
     end

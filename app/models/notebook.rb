@@ -12,4 +12,15 @@ class Notebook < ActiveRecord::Base
     end
   end
 
+  def note_count
+    self.notes.count
+  end
+
+  def reference_count
+    self.references.count
+  end
+
+
+
+
 end

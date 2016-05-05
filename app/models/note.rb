@@ -5,13 +5,7 @@ class Note < ActiveRecord::Base
   validates :name, :presence => true
   validates :content, :presence => true
 
-  # CHANGE TO CUSTOM ATTR WRITERS
 
-  def notebooks_attributes=(notebooks_hashes)
-    notebooks_hashes.each do |i, notebook_attributes|
-      self.notebooks.find_or_create_by(title: notebook_attributes[:title])
-    end
-  end
 
   def references_attributes=(references_hashes)
     references_hashes.each do |i, reference_attributes|

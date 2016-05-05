@@ -2,6 +2,10 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @notes = Note.all
+  end
+
   def show
     @notebook = Notebook.find_by(params[:notebook_id])
   end
@@ -53,7 +57,7 @@ class NotesController < ApplicationController
 
   def destroy
     @note.destroy
-    redirect_to notebooks_path(@notebook)
+    redirect_to notes_path
   end
 
   private
