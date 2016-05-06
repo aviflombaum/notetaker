@@ -11,11 +11,7 @@ class NotesController < ApplicationController
   end
 
   def new
-    if params[:notebook_id] && !Notebook.exists?(params[:notebook_id])
-      redirect_to notebooks_path, alert: "Notebook not found."
-    else
-      @note = Note.new(notebook_id: params[:notebook_id])
-    end
+    @note = Note.new(notebook_id: params[:notebook_id])
   end
 
   def edit
