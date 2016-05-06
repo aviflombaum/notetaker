@@ -1,9 +1,9 @@
 <%= form_for(@reference) do |f| %>
 
   <div class="form-group">
-    <%= f.label :reference_link %>
-    <%= f.text_field :reference_link %>
+    <%= f.label :reference_link, :class => "control-label" %>
+    <%= f.text_field :reference_link, :class => "form-control"  %>
   </div>
 
-  <%= f.submit %>
+  <%= f.submit "Submit", :class => "btn btn-default" %>
 <% end %>

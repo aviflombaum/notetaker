@@ -5,7 +5,7 @@
       <li role="presentation" ><%= link_to 'All Notebooks', notebooks_path %></li>
       <li role="presentation"><%= link_to 'New Notebook', new_notebook_path %></li>
       <li role="presentation"><%= link_to 'New Reference', new_reference_path %></li>
-      <li role="presentation"><%= link_to 'Log Out', destroy_user_session_path, method: :get %></li>
+      <li role="presentation"><%= link_to 'Log Out', destroy_user_session_path, method: :get %></li> <!-- pull this right -->
     <% else %>
       <li role="presentation" ><%= link_to 'Sign Up', new_user_registration_path %></li>
       <li role="presentation"><%= link_to 'Log In', new_user_session_path %></li>

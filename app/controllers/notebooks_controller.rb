@@ -4,7 +4,8 @@ class NotebooksController < ApplicationController
 
 
   def index
-    @notebooks = Notebook.all
+    @notebooks = Notebook.by_user(current_user)
+    @references = Reference.all
   end
 
   def show

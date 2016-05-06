@@ -1,8 +1,25 @@
-<h1>Your Notebooks</h1>
+<div class="row">
 
-<% @notebooks.each do |book| %>
-  <h2><%= link_to book.title, notebook_path(book) %></h2>
-  <p>
-    <%= book.note_count %> Notes
-  </p>
-<% end %>
+  <div class="col-md-5 col-md-offset-1">
+    <h3>Notebooks for <%= current_user.email %></h3>
+    <% @notebooks.each do |book| %>
+      <h2><%= link_to book.title, notebook_path(book) %></h2>
+      <p>
+        <%= book.note_count %> Notes
+      </p>
+    <% end %>
+  </div>
+
+
+  <div class="col-md-offset-6">
+    <h3>Looking for some Reading material? </h3>
+    <ul>
+      <% @references.each do |ref| %>
+        <li> <%= ref.reference_link %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+</div>

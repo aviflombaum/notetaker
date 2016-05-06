@@ -6,7 +6,7 @@
         <p><%= @notebook.reference_count %> References in this notebook</p>
         <div class="inline">
           <%= link_to 'Back', notebook_path(@notebook), :class => "btn btn-small btn-default" %>
-          <% if current_user == @notebook.user_id %>
+          <% if current_user.id == @notebook.user_id %>
             <%= link_to 'New Note', new_notebook_note_path(@notebook, @note), :class => "btn btn-small btn-default" %>
             <%= link_to "Delete", @notebook, method: :delete, data: {confirm: "Are you sure you want to delete this notebook?"}, :class => "btn btn-small btn-default" %>
           <% end %>

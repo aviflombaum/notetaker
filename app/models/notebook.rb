@@ -20,7 +20,9 @@ class Notebook < ActiveRecord::Base
     self.references.count
   end
 
-
+  def self.by_user(user_id)
+    where(user: user_id)
+  end
 
 
 end

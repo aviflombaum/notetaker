@@ -12,12 +12,8 @@ REQUIREMENTS - DONE:
 11) Logout gets routing error
 12) Move Errors to flash messages in controller
 13) /notebooks isn't working
-
-
-
-REQUIREMENTS - TO DO:
-1) At least 1 class level ActiveRecord scope method - report, overdue tasks, most valued cart, etc
-2) first note in notebook isn't being created in the notebook/new
+14) At least 1 class level ActiveRecord scope method - report, overdue tasks, most valued cart, etc
+15) first note in notebook isn't being created in the notebook/new
 
 
 
@@ -94,4 +90,14 @@ OMNIAUTH FLOW:
 9) otherwise, create a user based on their email and log them in
 
 
-  <%= link_to "Delete", @note, method: :delete, data: {confirm: "Are you sure you want to delete this note?"}, :class => "btn btn-small btn-default" %>
+Now the question becomes, is this a class method on the Post model itself, or is it an instance method on a specific post?
+Well, since we are going to be asking for multiple post instances from the database, we won't have an instance to begin with, so we'll need to use a class method.
+Class methods are commonly used on ActiveRecord models to encapsulate this type of custom query functionality, so let's do that now.
+
+
+jquery
+Must render one show page and one index page via jQuery and an Active Model Serialization JSON Backend.
+Must use your Rails api to create a resource and render the response without a page refresh.
+The rails API must reveal at least one has-many relationship in the JSON that is then rendered to the page.
+Must have at least one link that loads, or updates a resource without reloading the page.
+Must translate the JSON responses into Javascript Model Objects. The Model Objects must have at least one method on the prototype. Formatters work really well for this.
