@@ -1,5 +1,7 @@
 <h1>Reference Articles</h1>
 
-<% @references.each do |ref| %>
-  <h2><%= ref.reference_link %></h2>
-<% end %>
+  <ul>
+    <% @references.each do |ref| %>
+      <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
+    <% end %>
+  </ul>

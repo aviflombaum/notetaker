@@ -2,7 +2,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <h1 class="page-header"><%= @reference.reference_link %></h1>
+      <h1 class="page-header"><%= link_to @reference.name, url_with_protocol(@reference.reference_link), target: :blank %> 
+</h1>
       <div class="inline">
         <%= link_to 'Back', references_path(@references), :class => "btn btn-small btn-default" %> <!-- FIX THIS -->
 

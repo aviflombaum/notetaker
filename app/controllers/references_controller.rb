@@ -5,10 +5,6 @@ class ReferencesController < ApplicationController
     @references = Reference.all
   end
 
-  def show
-    @reference = Reference.find(params[:id])
-  end
-
   def new
     @reference = Reference.new
   end
@@ -17,7 +13,7 @@ class ReferencesController < ApplicationController
     @reference = Reference.new(reference_params)
     if @reference.save
       flash[:success] = "Reference created!"
-      redirect_to reference_path(@reference)
+      redirect_to references_path
     else
       flash[:error] = "Could not create reference. Try again"
       render :new
@@ -33,6 +29,6 @@ class ReferencesController < ApplicationController
   private
 
   def reference_params
-    params.require(:reference).permit(:reference_link)
+    params.require(:reference).permit(:reference_link, :name)
   end
 end

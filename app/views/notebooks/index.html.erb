@@ -15,8 +15,7 @@
     <h3>Looking for some Reading material? </h3>
     <ul>
       <% @references.each do |ref| %>
-        <li> <%= ref.reference_link %>
-        </li>
+        <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
       <% end %>
     </ul>
   </div>
