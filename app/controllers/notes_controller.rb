@@ -35,7 +35,7 @@ class NotesController < ApplicationController
       flash[:success] = "Note created!"
       redirect_to @note
     else
-      flash[:error] = "Could not create note. Try again"
+      flash[:danger] = "Could not create note. Try again"
       render :new
     end
   end
@@ -46,7 +46,7 @@ class NotesController < ApplicationController
       flash[:success] = "Note updated!"
       redirect_to @note
     else
-      flash[:error] = "Could not update note. Try again"
+      flash[:danger] = "Could not update note. Try again"
       render :edit
     end
   end

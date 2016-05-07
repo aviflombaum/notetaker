@@ -13,3 +13,34 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+ $font-stack:    Helvetica, sans-serif;
+ $primary-color-gray: #2A2A2A;
+ $accent-coral: #E6412E;
+ $accent-gold: #DEC24C;
+ $acceng-green: #D0F3c0;
+
+
+
+
+
+// TEXT //
+p, h1, h2, h3, h4, h5, h5, li, a {
+  font: 100%, $font-stack;
+  color: $primary-color-gray;
+}
+
+
+
+// BUTTONS & LINKS //
+.btn {
+  border-color: $accent-coral;
+  color: $accent-coral;
+}
+
+
+// LISTS //
+ul {
+  list-style-type: none;
+}

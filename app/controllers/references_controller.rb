@@ -15,7 +15,7 @@ class ReferencesController < ApplicationController
       flash[:success] = "Reference created!"
       redirect_to references_path
     else
-      flash[:error] = "Could not create reference. Try again"
+      flash[:danger] = "Could not create reference. Try again"
       render :new
     end
   end

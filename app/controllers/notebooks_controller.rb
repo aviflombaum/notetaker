@@ -29,7 +29,7 @@ class NotebooksController < ApplicationController
       flash[:success] = "Notebook created!"
       redirect_to notebook_path(@notebook)
     else
-      flash[:error] = "Could not create Notebook. Try again"
+      flash[:danger] = "Could not create Notebook. Try again"
       render :new
     end
   end
