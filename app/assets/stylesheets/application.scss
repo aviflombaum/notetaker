@@ -16,30 +16,24 @@
 
 
  $font-stack:    Helvetica, sans-serif;
- $primary-color-gray: #2A2A2A;
- $accent-coral: #E6412E;
- $accent-gold: #DEC24C;
- $accent-green: #D0F3c0;
- $light-green: #E8F3EB;
- $green: #188E61;
-
+ $light-mint: #48CFAD;
+ $mint: #37BC9B;
+ $light-gray: #CCD1D9;
+ $medium-gray: #AAB2BD;
 
 
 // TEXT //
 p, h1, h2, h3, h4, h5, h5, li, a {
   font: 100%, $font-stack;
-  color: $primary-color-gray;
+  color: $medium-gray;
 }
 
-a.visited, a.hover {
-  color: $primary-color-gray;
-}
 
 
 // BUTTONS & LINKS //
 .btn {
-  border-color: $accent-coral;
-  color: $accent-coral;
+  border-color: $mint;
+  color: $mint;
 }
 
 
@@ -52,4 +46,19 @@ ul {
 
 .padding-bottom {
   padding-bottom: 5%;
+}
+
+
+.notebook {
+  a {
+    color: $mint;
+  };
+  p {
+    color: $light-mint
+  }
+}
+
+
+.page-header {
+  color: $mint;
 }

@@ -1,18 +1,21 @@
 
 <div class="col-md-10 col-md-offset-1">
 
-  <div class="row">
-    <h3 class="text-center page-header">Notebooks for <%= current_user.email %></h3>
+  <div class="row main-notebook">
+    <h2 class="text-center page-header">Notebooks for <%= current_user.email %></h2>
     <% @notebooks.each do |book| %>
       <div class="col-md-4 padding-bottom">
-        <h2><%= link_to book.title, notebook_path(book) %></h2>
-        <p><%= book.note_count %> Notes</p>
-      </div>
+        <div class="notebook">
+          <h4><%= link_to book.title, notebook_path(book) %></h4>
+          <p><%= book.note_count %> Notes</p>
+        </div>
+        </div>
+
     <% end %>
   </div>
 
   <div class="row">
-    <h3 class="text-center page-header">References for <%= current_user.email %> </h3>
+    <h2 class="text-center page-header">References for <%= current_user.email %> </h2>
     <ul>
       <% @my_refs.each do |ref| %>
         <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
@@ -21,7 +24,7 @@
   </div>
 
   <div class="row">
-    <h3 class="text-center page-header">Looking for some Reading material? Try out some other references.</h3>
+    <h2 class="text-center page-header">Looking for some Reading material? Try out some other references.</h2>
     <ul>
       <% @references.each do |ref| %>
         <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
