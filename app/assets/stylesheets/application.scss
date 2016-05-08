@@ -19,9 +19,9 @@
  $primary-color-gray: #2A2A2A;
  $accent-coral: #E6412E;
  $accent-gold: #DEC24C;
- $acceng-green: #D0F3c0;
-
-
+ $accent-green: #D0F3c0;
+ $light-green: #E8F3EB;
+ $green: #188E61;
 
 
 
@@ -31,6 +31,9 @@ p, h1, h2, h3, h4, h5, h5, li, a {
   color: $primary-color-gray;
 }
 
+a.visited, a.hover {
+  color: $primary-color-gray;
+}
 
 
 // BUTTONS & LINKS //
@@ -43,4 +46,10 @@ p, h1, h2, h3, h4, h5, h5, li, a {
 // LISTS //
 ul {
   list-style-type: none;
+}
+
+// SPACING //
+
+.padding-bottom {
+  padding-bottom: 5%;
 }

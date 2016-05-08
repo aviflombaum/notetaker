@@ -3,7 +3,7 @@ class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
   def index
-    @notes = Note.alpha_order
+    @notes = Note.all
   end
 
   def show

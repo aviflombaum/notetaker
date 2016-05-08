@@ -11,6 +11,7 @@ class ReferencesController < ApplicationController
 
   def create
     @reference = Reference.new(reference_params)
+    @reference.user_id = current_user.id
     if @reference.save
       flash[:success] = "Reference created!"
       redirect_to references_path

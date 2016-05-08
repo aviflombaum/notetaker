@@ -2,7 +2,7 @@
   <%= f.hidden_field(:notebook_id) %>
   <div class="form-group">
     <%= f.label :reference_link, :class => "control-label" %>
-    <%= f.select :reference_id, Reference.all.collect { |r| [r.reference_link, r.id]}, include_blank: :true %>
+    <%= f.select :reference_id, Reference.all.collect { |r| [r.reference_link, r.id]}, include_blank: :true, :class => "form-control" %>
   </div>
 
   <div class="form-group">

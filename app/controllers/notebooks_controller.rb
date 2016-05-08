@@ -6,6 +6,7 @@ class NotebooksController < ApplicationController
   def index
     @notebooks = Notebook.by_user(current_user)
     @references = Reference.all
+    @my_refs = Reference.by_user(current_user)
   end
 
   def show

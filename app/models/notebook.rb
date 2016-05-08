@@ -24,5 +24,4 @@ class Notebook < ActiveRecord::Base
     where(user: user_id)
   end
 
-
 end

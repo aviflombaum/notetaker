@@ -1,7 +1,9 @@
-<h1>Reference Articles</h1>
+<div class="col-md-10 col-md-offset-1">
 
+  <h1>Reference Articles</h1>
   <ul>
     <% @references.each do |ref| %>
-      <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
+    <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
     <% end %>
   </ul>
+</div>

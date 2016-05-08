@@ -101,3 +101,10 @@ Must use your Rails api to create a resource and render the response without a p
 The rails API must reveal at least one has-many relationship in the JSON that is then rendered to the page.
 Must have at least one link that loads, or updates a resource without reloading the page.
 Must translate the JSON responses into Javascript Model Objects. The Model Objects must have at least one method on the prototype. Formatters work really well for this.
+
+
+
+FEATURES TO ADD:
+1 - Add user_id to references
+2 - Make a to read later list
+3 -

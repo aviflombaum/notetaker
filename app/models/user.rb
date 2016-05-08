@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :notebooks
+  has_many :references
 
 
   def self.from_omniauth(auth)
