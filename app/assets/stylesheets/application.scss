@@ -20,6 +20,9 @@
  $mint: #37BC9B;
  $light-gray: #CCD1D9;
  $medium-gray: #AAB2BD;
+ $indigo: #3F51B5;
+ $gray: #9E9E9E;
+ $toggleColor: #FAFAFA;
 
 
 // TEXT //
@@ -29,11 +32,10 @@ p, h1, h2, h3, h4, h5, h5, li, a {
 }
 
 
-
 // BUTTONS & LINKS //
 .btn {
-  border-color: $mint;
-  color: $mint;
+  border-color: $indigo;
+  color: $indigo;
 }
 
 
@@ -50,15 +52,24 @@ ul {
 
 
 .notebook {
-  a {
-    color: $mint;
+  a, p {
+    color: $indigo;
   };
-  p {
-    color: $light-mint
-  }
 }
 
 
 .page-header {
-  color: $mint;
+  color: $light-gray;
+}
+
+form {
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 10%;
+}
+
+.navbar-default {
+  a {
+    background-color:transparent !important;
+  }
 }

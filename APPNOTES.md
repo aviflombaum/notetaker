@@ -95,7 +95,7 @@ Well, since we are going to be asking for multiple post instances from the datab
 Class methods are commonly used on ActiveRecord models to encapsulate this type of custom query functionality, so let's do that now.
 
 
-jquery
+jquery assessment
 Must render one show page and one index page via jQuery and an Active Model Serialization JSON Backend.
 Must use your Rails api to create a resource and render the response without a page refresh.
 The rails API must reveal at least one has-many relationship in the JSON that is then rendered to the page.
@@ -108,3 +108,8 @@ FEATURES TO ADD:
 1 - Add user_id to references
 2 - Make a to read later list
 3 -
+
+
+
+
+Same for notebooks/show

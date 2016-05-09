@@ -5,29 +5,31 @@
     <h2 class="text-center page-header">Notebooks for <%= current_user.email %></h2>
     <% @notebooks.each do |book| %>
       <div class="col-md-4 padding-bottom">
-        <div class="notebook">
-          <h4><%= link_to book.title, notebook_path(book) %></h4>
-          <p><%= book.note_count %> Notes</p>
+        <div class="panel panel-default text-center">
+          <h4 class="notebook"><%= link_to book.title, notebook_path(book) %></h4>
+          <h6 class="show">Notebook Details</h6>
+          <p class="notebook-details"><%= book.note_count %> Notes</p>
         </div>
+
         </div>
 
     <% end %>
   </div>
 
   <div class="row">
-    <h2 class="text-center page-header">References for <%= current_user.email %> </h2>
+    <h2 class="text-center page-header" id="myrefs">References for <%= current_user.email %> </h2>
     <ul>
       <% @my_refs.each do |ref| %>
-        <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
+        <li class="refs"> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
       <% end %>
     </ul>
   </div>
 
   <div class="row">
-    <h2 class="text-center page-header">Looking for some Reading material? Try out some other references.</h2>
+    <h2 class="text-center page-header" id="allrefs">Looking for some Reading material? Try out some other references.</h2>
     <ul>
       <% @references.each do |ref| %>
-        <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
+        <li = class="allrefs"> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
       <% end %>
     </ul>
   </div>

@@ -13,8 +13,8 @@
 
     <div class="row">
       <% @notebook.notes.each do |note|  %>
-        <h4><%= link_to note.name, notebook_note_path(@notebook, note)%></h4>
-        <p><%=note.content %></p>
+        <h4 class="noteName"><%= note.name%></h4>
+        <p class="noteContent"><%=note.content %></p>
       <% end %>
     </div>
   </div>
