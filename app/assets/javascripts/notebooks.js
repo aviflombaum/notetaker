@@ -12,15 +12,13 @@ $(document).ready(function() {
     });
 
     $('.noteName').click(function() {
-       $('.noteContent').fadeToggle();
+       $('.noteContent').toggle();
     });
 
     $(".panel").hover(function(){
-      $(this).css("background-color", "#FAFAFA");
-      $(this).css("color", "white")
+      $(this).addClass("panelHover")
     }, function(){
-      $(this).css("background-color", "white");
-      $(this).css("color", "#9E9E9E")
+      $(this).removeClass("panelHover")
 
     }
   );

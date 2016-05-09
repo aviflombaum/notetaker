@@ -6,6 +6,8 @@
       <li role="presentation"><%= link_to 'New Notebook', new_notebook_path %></li>
       <li role="presentation"><%= link_to 'New Reference', new_reference_path %></li>
       <div class="pull-right">
+        <li role="presentation"><%= current_user.username %></li>
+
         <li role="presentation"><%= link_to 'Log Out', destroy_user_session_path, method: :get %></li>
       </div>
     <% else %>

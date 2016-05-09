@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
+  validates :email, uniqueness: true
+  validates :username, uniqueness: true
+  
+
 
   has_many :notebooks
   has_many :references

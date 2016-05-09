@@ -14,6 +14,7 @@
     <div class="row">
       <% @notebook.notes.each do |note|  %>
         <h4 class="noteName"><%= note.name%></h4>
+        <p>Updated at: <%=note.updated_at.strftime("%D") %> </p>
         <p class="noteContent"><%=note.content %></p>
       <% end %>
     </div>

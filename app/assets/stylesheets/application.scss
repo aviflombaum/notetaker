@@ -13,7 +13,11 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import url(https://fonts.googleapis.com/css?family=Oswald|Quattrocento:400,700);
 
+
+ $display-font: 'Oswald', sans-serif;
+ $body-font: 'Quattrocento', serif;
 
  $font-stack:    Helvetica, sans-serif;
  $light-mint: #48CFAD;
@@ -27,8 +31,14 @@
 
 // TEXT //
 p, h1, h2, h3, h4, h5, h5, li, a {
-  font: 100%, $font-stack;
-  color: $medium-gray;
+  font: 100%, $body-font;
+  color: $gray;
+
+
+}
+
+a:hover {
+    color: $indigo
 }
 
 
@@ -45,21 +55,16 @@ ul {
 }
 
 // SPACING //
-
-.padding-bottom {
-  padding-bottom: 5%;
-}
+//
+// .padding-bottom {
+//   padding-bottom: 2%;
+// }
 
 
 .notebook {
   a, p {
     color: $indigo;
   };
-}
-
-
-.page-header {
-  color: $light-gray;
 }
 
 form {
@@ -72,4 +77,20 @@ form {
   a {
     background-color:transparent !important;
   }
+}
+
+
+.panel {
+  a, h6, p {
+    color: $gray;
+  }
+
+}
+
+.panelHover {
+  background-color: $indigo;
+  a, h6, p {
+    color: white;
+  }
+
 }
