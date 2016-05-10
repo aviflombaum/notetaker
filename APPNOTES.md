@@ -108,8 +108,3 @@ FEATURES TO ADD:
 1 - Add user_id to references
 2 - Make a to read later list
 3 -
-
-
-
-
-Same for notebooks/show

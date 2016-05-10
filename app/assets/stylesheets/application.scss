@@ -16,81 +16,114 @@
  @import url(https://fonts.googleapis.com/css?family=Oswald|Quattrocento:400,700);
 
 
- $display-font: 'Oswald', sans-serif;
- $body-font: 'Quattrocento', serif;
 
- $font-stack:    Helvetica, sans-serif;
- $light-mint: #48CFAD;
- $mint: #37BC9B;
- $light-gray: #CCD1D9;
- $medium-gray: #AAB2BD;
- $indigo: #3F51B5;
- $gray: #9E9E9E;
+ // VARIABLES & MIXINS //
+ $display-font: 'Oswald', sans-serif; //NOT WORKING
+ $body-font: 'Quattrocento', serif;
+ $font-stack: Helvetica, sans-serif;
+
+ $primary-light: #CCD1D9; //light-gray
+ $primary-medium: #AAB2BD; //medium-gray
+ $accent: #3F51B5; //indigo
+ $primary: #9E9E9E; //gray
  $toggleColor: #FAFAFA;
 
+//  section.secondary {
+//   background: lighten($color-accent, 30%);
+// }
 
-// TEXT //
+// section.secondary {
+//   background: darken($color-accent, 30%);
+// }
+
+@mixin title-style {
+  font-family: $display-font;
+  text-transform: uppercase;
+  color: $accent
+}
+
+@mixin body-style {
+  font-family: $body-font;
+  color: $primary;
+}
+
+
+// 1 - TYPOGRAPHY //
 p, h1, h2, h3, h4, h5, h5, li, a {
   font: 100%, $body-font;
   color: $gray;
-
-
 }
 
 a:hover {
-    color: $indigo
+    color: $accent
 }
 
-
-// BUTTONS & LINKS //
-.btn {
-  border-color: $indigo;
-  color: $indigo;
-}
-
-
-// LISTS //
-ul {
-  list-style-type: none;
-}
-
-// SPACING //
-//
-// .padding-bottom {
-//   padding-bottom: 2%;
-// }
-
-
-.notebook {
-  a, p {
-    color: $indigo;
-  };
-}
-
-form {
-  width: 60%;
-  margin: 0 auto;
-  padding-top: 10%;
-}
-
+// 2 - PAGE STRUCTURE //
+// 3 - HEADER & NAV //
 .navbar-default {
   a {
     background-color:transparent !important;
   }
 }
 
+// 4 - CONTENT & COMPONENTS //
+form {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.notebook {
+  a, p {
+    color: $accent;
+  }
+}
+
+
+.page-header,
+.noteName,
+.notebook {
+  @include title-style;
+}
+
+.notebookSection,
+.notebookNotesSection,
+.notebook-details,
+.show, {
+  @include body-style;
+
+}
+
+.references {
+  li {
+    @include body-style;
+  }
+}
+
+
 
 .panel {
   a, h6, p {
-    color: $gray;
+    color: $primary;
   }
-
 }
 
 .panelHover {
-  background-color: $indigo;
+  background-color: $accent;
   a, h6, p {
     color: white;
   }
-
 }
+
+.btn {
+  border-color: $accent;
+  color: $accent;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+// 5 - FOOTER //
+
+// 6 - MISC //

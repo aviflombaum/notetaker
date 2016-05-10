@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
   validates :email, uniqueness: true
   validates :username, uniqueness: true
-  
-
 
   has_many :notebooks
   has_many :references
