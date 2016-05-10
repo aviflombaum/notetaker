@@ -17,7 +17,7 @@
 
 
 
- // VARIABLES & MIXINS //
+ // BASE //
  $display-font: 'Oswald', sans-serif; //NOT WORKING
  $body-font: 'Quattrocento', serif;
  $font-stack: Helvetica, sans-serif;
@@ -28,13 +28,6 @@
  $primary: #9E9E9E; //gray
  $toggleColor: #FAFAFA;
 
-//  section.secondary {
-//   background: lighten($color-accent, 30%);
-// }
-
-// section.secondary {
-//   background: darken($color-accent, 30%);
-// }
 
 @mixin title-style {
   font-family: $display-font;
@@ -48,7 +41,6 @@
 }
 
 
-// 1 - TYPOGRAPHY //
 p, h1, h2, h3, h4, h5, h5, li, a {
   font: 100%, $body-font;
   color: $gray;
@@ -58,18 +50,33 @@ a:hover {
     color: $accent
 }
 
-// 2 - PAGE STRUCTURE //
-// 3 - HEADER & NAV //
+form {
+  width: 60%;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+// COMPONENTS //
+
+// .alert
+// .page-header
+
+.btn {
+  border-color: $accent;
+  color: $accent;
+}
+
+
+
+// PATTERNS //
 .navbar-default {
   a {
     background-color:transparent !important;
   }
-}
-
-// 4 - CONTENT & COMPONENTS //
-form {
-  width: 60%;
-  margin: 0 auto;
 }
 
 .notebook {
@@ -77,7 +84,6 @@ form {
     color: $accent;
   }
 }
-
 
 .page-header,
 .noteName,
@@ -100,7 +106,6 @@ form {
 }
 
 
-
 .panel {
   a, h6, p {
     color: $primary;
@@ -114,16 +119,34 @@ form {
   }
 }
 
-.btn {
-  border-color: $accent;
-  color: $accent;
+// show/ hide
+.container .all-references {
+
 }
 
-ul {
-  list-style-type: none;
+.container .all-references .all-references-top {
+
+}
+
+.container .all-references .all-references-bottom {
+
+  display: none;
 }
 
 
-// 5 - FOOTER //
+.container .all-references {
 
-// 6 - MISC //
+}
+
+.container .my-references .my-references-top {
+
+}
+
+.container .my-references .my-references-bottom {
+
+  display: none;
+}
+
+
+
+// VIEWS //
