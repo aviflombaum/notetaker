@@ -20,4 +20,18 @@ class User < ActiveRecord::Base
       end
   end
 
+  def notebook_count
+    self.notebooks.count
+  end
+
+  def note_count #refactor? collect?
+    all = []
+    self.notebooks.each do |book|
+      book.notes.each do |n|
+        all << n
+      end
+    end
+    all.count
+  end
+
 end

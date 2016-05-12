@@ -8,13 +8,13 @@
           <%= link_to "Delete", @notebook, method: :delete, data: {confirm: "Are you sure you want to delete this notebook?"}, :class => "btn btn-xs btn-default" %>
         <% end %>
       </div>
-      <p><%= @notebook.reference_count %> References in this notebook</p>
+      <p><%= pluralize(@notebook.reference_count, 'reference') %>  in this notebook</p>
 
     </div>
 
     <div class="row notebookNoteSection">
       <% @notebook.notes.each do |note|  %>
-        <h4 class="noteName"><%= note.name%></h4>
+        <h4 class="noteName"><%= link_to note.name, note_path(note)%></h4>
         <p>Updated at: <%=note.updated_at.strftime("%D") %> </p>
         <p class="noteContent"><%=note.content %></p>
       <% end %>
