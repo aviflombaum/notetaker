@@ -1,20 +1,38 @@
-<div class="navbar-default">
-  <ul class="nav nav-pills">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">NoteTaker</a>
+    </div>
 
-    <% if user_signed_in? %>
-      <li role="presentation" ><%= link_to 'All Notebooks', notebooks_path %></li>
-      <li role="presentation"><%= link_to 'New Notebook', new_notebook_path %></li>
-      <li role="presentation"><%= link_to 'New Reference', new_reference_path %></li>
-      <div class="pull-right">
-        <li role="presentation"><%= current_user.username %></li>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <% if user_signed_in? %>
+          <ul class="nav navbar-nav">
+            <li class="active"><%= link_to 'All Notebooks', notebooks_path %></li>
+            <li><%= link_to 'New Notebook', new_notebook_path %></li>
+            <li><%= link_to 'New Reference', new_reference_path %></li>
+          </ul>
 
-        <li role="presentation"><%= link_to 'Log Out', destroy_user_session_path, method: :get %></li>
-      </div>
-    <% else %>
-      <div class="pull-right">
-        <li role="presentation" ><%= link_to 'Sign Up', new_user_registration_path %></li>
-        <li role="presentation"><%= link_to 'Log In', new_user_session_path %></li>
-      </div>
-    <% end %>
-  </ul>
-</div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= current_user.username %></li>
+        <li><%= link_to 'Log Out', destroy_user_session_path, method: :get %></li>
+
+      </ul>
+      <% else %>
+
+
+      <ul class="nav navbar-nav navbar-right">
+          <li role="presentation" ><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li role="presentation"><%= link_to 'Log In', new_user_session_path %></li>
+        </ul>
+      <% end %>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
