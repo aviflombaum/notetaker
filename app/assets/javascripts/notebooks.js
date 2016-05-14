@@ -31,19 +31,11 @@ $(document).ready(function() {
 	   $parent_box.find('.all-references-bottom').toggle();
   });
 
-$('.my-references-top').on('click', function() {
-  $parent_box = $(this).closest('.my-references');
-  $parent_box.siblings().find('.my-references-bottom').hide();
-  $parent_box.find('.my-references-bottom').toggle();
-});
+  $('.my-references-top').on('click', function() {
+    $parent_box = $(this).closest('.my-references');
+    $parent_box.siblings().find('.my-references-bottom').hide();
+    $parent_box.find('.my-references-bottom').toggle();
+  });
 
 
 });
-
-
-
-//   $('.top').on('click', function() {
-// 	$parent_box = $(this).closest('.box');
-// 	$parent_box.siblings().find('.bottom').hide();
-// 	$parent_box.find('.bottom').toggle();
-// });
