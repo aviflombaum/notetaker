@@ -18,15 +18,10 @@ class ReferencesController < ApplicationController
   end
 
   def create
-    @reference = Reference.new(reference_params)
+    @reference = Reference.create(reference_params)
     @reference.user_id = current_user.id
-    if @reference.save
-      flash[:success] = "Reference created!"
-      redirect_to references_path
-    else
-      flash[:danger] = "Could not create reference. Try again"
-      render :new
-    end
+    @reference.save
+    render json: @reference, status: 201
   end
 
   def destroy

@@ -14,9 +14,12 @@
 
     <div class="row notebookNoteSection">
       <% @notebook.notes.each do |note|  %>
-        <h4 class="noteName"><%= link_to note.name, note_path(note)%></h4>
-        <p>Updated at: <%=note.updated_at.strftime("%D") %> </p>
-        <p class="noteContent"><%=note.content %></p>
+        <div class="single-note">
+          <h4 class="noteName"><%= link_to note.name, note_path(note)%></h4>
+          <p>Updated at: <%=note.updated_at.strftime("%D") %> </p>
+          <p class="noteContent"><%=truncate(note.content, length: 100) %></p>
+        </div>
+
       <% end %>
     </div>
   </div>

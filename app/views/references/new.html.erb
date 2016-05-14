@@ -1,2 +1,37 @@
 <h2 class="text-center page-header">New Reference</h2>
-<%= render 'form' %>
+<%= form_for(@reference) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => "control-label" %>
+    <%= f.text_field :name, :class => "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :reference_link, :class => "control-label" %>
+    <%= f.text_field :reference_link, :class => "form-control"  %>
+  </div>
+
+  <%= f.submit "Submit", :class => "btn btn-default" %>
+<% end %>
+
+<div id="referenceResult">
+  <h2 id="referenceName"></h2>
+  <p id="referenceLink">
+
+  </p>
+</div>
+
+
+<script type="text/javascript" charset="UTF-8">
+  $(function(){
+    $('form').submit(function(event){
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/references', values);
+      posting.done(function(data) {
+        var reference = data["reference"];
+        $("#referenceName").text(reference["name"]);
+        $("#referenceLink").text(reference["reference_link"]);
+      });
+    });
+  });
+</script>

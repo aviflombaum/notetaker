@@ -88,6 +88,10 @@ ul {
   }
 }
 
+.single-note {
+  margin-top: 3%;
+}
+
 .page-header,
 .noteName,
 .notebook {
@@ -97,7 +101,8 @@ ul {
 .notebookSection,
 .notebookNotesSection,
 .notebook-details,
-.show, {
+.show,
+.single-note {
   @include body-style;
 
 }
