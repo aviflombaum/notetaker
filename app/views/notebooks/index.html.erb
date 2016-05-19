@@ -10,16 +10,15 @@
           <h6 class="show">Notebook Details</h6>
           <p class="notebook-details"><%= pluralize(book.note_count, 'note') %>   |  Last Update: <%= book.updated_at.strftime("%D") %></p>
         </div>
-
         </div>
-
     <% end %>
   </div>
 
-<div class="row">
-    <div class="all-references">
+<div class="container">
+
+    <div class="all-references col-sm-5">
       <div class="all-references-top">
-          <h2 class="text-center page-header" id="myRefSection">References for <%= current_user.username %> </h2>
+          <h2 class="text-center page-header smaller" id="myRefSection">Your Articles</h2>
         </div>
         <div class="all-references-bottom">
           <ul class="see">
@@ -30,10 +29,9 @@
         </div>
       </div>
 
-
-    <div class="my-references">
+    <div class="my-references col-sm-5-offset-5">
       <div class="my-references-top">
-        <h2 class="text-center page-header">Looking for some Reading material? Try out some other references.</h2>
+        <h2 class="text-center page-header smaller">All Articles</h2>
       </div>
       <div class="my-references-bottom">
         <ul>
@@ -43,15 +41,12 @@
         </ul>
       </div>
     </div>
-
-
 </div>
 
     <div class="row">
       <div class="reports">
         You have <%= pluralize(current_user.notebook_count, 'notebook') %>
         You have <%= pluralize(current_user.note_count, 'note') %>
-
       </div>
     </div>
 

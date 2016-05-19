@@ -10,6 +10,11 @@ class NotesController < ApplicationController
     @notebook = Notebook.find_by(params[:notebook_id])
   end
 
+  def content
+    note = Note.find_by(id: params[:id])
+    render plain: note.content
+  end
+
   def new
     @note = Note.new(notebook_id: params[:notebook_id])
   end

@@ -1,11 +1,5 @@
 $(document).ready(function() {
-    $('#myrefs').click(function() {
-       $('.refs').toggle();
-    });
 
-    $('#allrefs').click(function() {
-      $('.allrefs').toggle();
-    });
 
     $('.show').click(function() {
        $('.notebook-details').toggle();
