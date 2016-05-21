@@ -6,8 +6,17 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
 
+# without serializer
+#   def show
+#     @notebook = Notebook.find_by(params[:notebook_id])
+#   end
+
+ # with serializer
   def show
-    @notebook = Notebook.find_by(params[:notebook_id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @note }
+    end
   end
 
   def content

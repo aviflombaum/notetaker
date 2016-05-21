@@ -18,7 +18,7 @@
           <h4 class="noteName"> <%= note.id %>: <%= link_to note.name, note_path(note)%></h4>
           <p>Updated at: <%=note.updated_at.strftime("%D") %> </p>
           <div id="content-<%= note.id %>"> <%=truncate(note.content, length: 100) %></div>
-          <button class='js-more' data-id='<%= note.id %>'> More...</button>
+          <button class='js-more btn' data-id='<%= note.id %>'> More...</button>
         </div>
 
       <% end %>
