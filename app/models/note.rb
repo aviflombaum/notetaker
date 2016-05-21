@@ -2,7 +2,7 @@ class Note < ActiveRecord::Base
   belongs_to :notebook
   belongs_to :reference
 
-  has_many :tags
+  has_many :note_tags
   has_many :tags, through: :note_tags
 
   validates :name, :presence => true
@@ -16,6 +16,12 @@ class Note < ActiveRecord::Base
     end
   end
 
+  def tags_attributes=(tags_attributes)
+    tags_attributes.each do |i, tag_attribute|
+      tag = Tag.find_or_create_by(tag_attribute)
+      self.tags << tag
+    end
+  end
 
   def self.without_a_reference
     where(reference_id: nil)

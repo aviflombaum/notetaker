@@ -6,6 +6,13 @@
   </div>
 
   <div class="form-group">
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+      <%= f.fields_for :tags, note.tags.build do |tags_fields| %>
+        <%= tags_fields.text_field :name %>
+      <% end %>
+  </div>
+
+  <div class="form-group">
       <%= f.label :name, :class => "control-label" %>
       <%= f.text_field :name, :class => "form-control" %>
   </div>
