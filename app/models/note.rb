@@ -2,6 +2,9 @@ class Note < ActiveRecord::Base
   belongs_to :notebook
   belongs_to :reference
 
+  has_many :tags
+  has_many :tags, through: :note_tags
+
   validates :name, :presence => true
   validates :content, :presence => true
 
