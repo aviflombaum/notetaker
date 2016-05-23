@@ -9,10 +9,10 @@
     </div>
     <h5>Notebook <%= @note.id %>: <%= @note.notebook.title %>  </h5>
     <% if @note.reference != nil %>
-      <h5> Reference: <%= @note.reference.reference_link %> </h5>
+      <h5> Reference: <%= @note.reference.name %> </h5>
     <% end %>
     <!-- <p> <%#= simple_format(@note.content)%> </p> -->
-    <div id="content-<%= @note.id %>"> <%=truncate(@note.content, length: 100) %></div>
+    <div id="content-<%= @note.id %>"> <%= simple_format(@note.content) %></div>
     <button class='js-more' data-id='<%= @note.id %>'> More...</button>
 
   </div>
@@ -24,13 +24,15 @@
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
-$(".js-more").on('click', function() {
-  // get the id from the data attribute
-  var id = $(this).data("id");
-  $.get("/notes/" + id + "/content", function(data) {
-    // alert(data);
-    $("#content-" + id).text(data);
+  $(".js-more").on('click', function() {
+    // get the id from the data attribute
+    var id = $(this).data("id");
+    $.get("/notes/" + id + "/content", function(data) {
+      // alert(data);
+      $("#content-" + id).text(data);
+    });
+    $("button").addClass("hidden");
+    // Add show less button
   });
-});
 });
 </script>

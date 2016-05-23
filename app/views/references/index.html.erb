@@ -1,9 +1,43 @@
 <div class="col-md-10 col-md-offset-1">
 
-  <h1>Reference Articles</h1>
+  <h1 article-heading>Reference Articles</h1>
   <ul>
     <% @references.each do |ref| %>
     <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
     <% end %>
   </ul>
+
+
+
+  <%= render 'form' %>
 </div>
+
+
+<div id="referenceResult">
+  <h2 id="referenceName"></h2>
+  <p id="referenceLink"></p>
+</div>
+
+
+<script type="text/javascript" charset="UTF-8">
+  $(function(){
+    $('form').submit(function(event){
+      debugger;
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/references', values);
+      posting.done(function(data) {
+        var reference = data["reference"];
+        $("#referenceName").text(reference["name"]);
+        $("#referenceLink").text(reference["reference_link"]);
+      });
+    });
+  });
+
+
+  function Reference (name, link) {
+    this.name = name;
+    this.reference_link = link;
+  }
+</script>
+<!--   to make it append to the ul -->
