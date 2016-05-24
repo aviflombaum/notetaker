@@ -14,8 +14,5 @@ class Reference < ActiveRecord::Base
     where(user: user_id)
   end
 
-  def self.not_mine(user_id) #fix
-    where(user: user_id)
-  end
 
 end

@@ -9,6 +9,10 @@ class NotebooksController < ApplicationController
     @my_refs = Reference.by_user(current_user)
   end
 
+  def top_notes
+    @notebooks = Notebook.all
+  end
+
   def show
   end
 
