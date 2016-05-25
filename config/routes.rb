@@ -9,7 +9,5 @@ Rails.application.routes.draw do
   resources :references
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root 'notebooks#index'
-  get 'top_notes', to: 'notebooks#top_notes'
-
 
 end

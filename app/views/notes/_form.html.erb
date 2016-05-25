@@ -5,12 +5,6 @@
     <%= f.select :reference_id, Reference.all.collect { |r| [r.reference_link, r.id]}, include_blank: :true, :class => "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
-      <%= f.fields_for :tags, note.tags.build do |tags_fields| %>
-        <%= tags_fields.text_field :name %>
-      <% end %>
-  </div>
 
   <div class="form-group">
       <%= f.label :name, :class => "control-label" %>

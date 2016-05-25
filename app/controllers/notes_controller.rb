@@ -4,13 +4,25 @@ class NotesController < ApplicationController
 
   def index
     @notes = Note.all
+    respond_to do |format|
+      format.html {render :index}
+      format.json { render json: @notes}
+    end
   end
 
-  def show
-    @notebook = Notebook.find_by(params[:notebook_id])
+  # I don't remember what this does...
+  def content
+    note = Note.find_by(id: params[:id])
+    render plain: note.content
   end
 
 
+   def show
+     respond_to do |format|
+       format.html { render :show }
+       format.json { render json: @note }
+     end
+   end
 
   def new
     @note = Note.new(notebook_id: params[:notebook_id])
@@ -32,14 +44,9 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(note_params)
-    if @note.save
-      flash[:success] = "Note created!"
-      redirect_to @note
-    else
-      flash[:danger] = "Could not create note. Try again"
-      render :new
-    end
+    @note = Note.create(note_params)
+    render json: @note, status: 201
+
   end
 
   def update
@@ -69,26 +76,3 @@ class NotesController < ApplicationController
     end
 
 end
-
-
-
-
-# with serializer
- # def show
- #   respond_to do |format|
- #     format.html { render :show }
- #     format.json { render json: @#note }
- #   end
- # end
-
- # index
- # respond_to do |format|
- #   format.html {render :index}
- #   format.json { render json: @notes}
- # end
-
-
- # def content
- #   note = Note.find_by(id: params[:id])
- #   render plain: note.content
- # end

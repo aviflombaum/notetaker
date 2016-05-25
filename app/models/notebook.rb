@@ -16,11 +16,8 @@ class Notebook < ActiveRecord::Base
     self.notes.count
   end
 
-  # Order notebooks by number of notebooks
   def self.order_notebooks
     Notebook.all.sort_by { |notebook| notebook.note_count}.reverse
-    # %w{apple pear fig}.sort_by { |word| word.length}
-
   end
 
 

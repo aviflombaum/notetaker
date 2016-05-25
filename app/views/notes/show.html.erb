@@ -1,18 +1,19 @@
 <div class="col-md-10 col-md-offset-1">
   <div class="row">
-    <h1 class="page-header"><%= @note.name %></h1>
+    <h1 class="page-header noteName"><%= @note.name %></h1>
 
     <div class="inline">
       <%= link_to 'Back', notebooks_path, :class => "btn btn-xs btn-default" %>
       <%= link_to 'Edit', edit_note_path(@note), :class => "btn btn-xs btn-default" %>
       <%= link_to "Delete", @note, method: :delete, data: {confirm: "Are you sure you want to delete this note?"}, :class => "btn btn-xs btn-default" %>
+
     </div>
     <h5>Notebook <%= @note.id %>: <%= @note.notebook.title %>  </h5>
     <% if @note.reference != nil %>
       <h5> Reference: <%= @note.reference.name %> </h5>
     <% end %>
     <!-- <p> <%#= simple_format(@note.content)%> </p> -->
-    <div id="content-<%= @note.id %>"> <%= simple_format(@note.content) %></div>
+    <div class="noteContent" id="content-<%= @note.id %>"> <%= simple_format(@note.content) %></div>
     <button class='js-more' data-id='<%= @note.id %>'> More...</button>
 
   </div>
@@ -21,7 +22,7 @@
 
 
 
-
+<!--  -->
 <script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-more").on('click', function() {
@@ -34,5 +35,12 @@ $(function () {
     $("button").addClass("hidden");
     // Add show less button
   });
+
+
 });
+
+
+
 </script>
+
+<!--  -->

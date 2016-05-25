@@ -7,13 +7,14 @@ class NotebooksController < ApplicationController
     @notebooks = Notebook.by_user(current_user)
     @references = Reference.all
     @my_refs = Reference.by_user(current_user)
-  end
-
-  def top_notes
-    @notebooks = Notebook.all
+    respond_to do |format|
+      format.html {render :index}
+      format.json { render json: @notebooks}
+    end
   end
 
   def show
+    @note = Note.new
   end
 
   def new
