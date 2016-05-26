@@ -16,26 +16,20 @@
 
     <div class="row notebookNoteSection">
       <% @notebook.notes.each do |note|  %>
-        <div class="single-note">
-          <h4 class="noteName"> <%= note.id %>: <%= link_to note.name, note_path(note)%></h4>
-          <p>Updated at: <%=note.updated_at.strftime("%D") %> </p>
+          <h4 class="noteName"> <%= note.id %>: <%= note.name%></h4>
           <div id="content-<%= note.id %>"> <%=truncate(note.content, length: 100) %></div>
           <button class='js-more btn' data-id='<%= note.id %>'> More...</button>
-        </div>
-
       <% end %>
+
     </div>
   </div>
 
 
 
-  <div id="noteResult">
-    <h2 id="noteName"></h2>
-    <p id="noteContent"></p>
-  </div>
 
 <!--  NOTES FORM -->
   <%= form_for @notebook.notes.build do |f| %>
+    <%= f.hidden_field(:notebook_id) %>
     <div class="form-group">
       <%= f.label :reference_link, :class => "control-label" %>
       <%= f.select :reference_id, Reference.all.collect { |r| [r.reference_link, r.id]}, include_blank: :true, :class => "form-control" %>
@@ -44,55 +38,34 @@
 
     <div class="form-group">
         <%= f.label :name, :class => "control-label" %>
-        <%= f.text_field :name, :class => "form-control" %>
+        <%= f.text_field :name, :class => "form-control", :id => "name" %>
     </div>
 
     <div class="form-group">
         <%= f.label :content, :class => "control-label" %>
-        <%= f.text_area :content, :class => "form-control" %>
+        <%= f.text_area :content, :class => "form-control", :id=> "content" %>
     </div>
 
     <%= f.submit "Submit", :class => "btn btn-default" %>
   <% end %>
 
 
-  <!--  JS -->
-
   <script type="text/javascript" charset="UTF-8">
-    $(function(){
-      $('form').submit(function(event){
-        event.preventDefault();
-        var values = $(this).serialize();
-        var posting = $.post('/notes', values);
-        debugger;
-        posting.done(function(data) {
-          var note = data["note"];
-          $("#noteName").text(note["name"]);
-          $("#noteContent").text(note["content"]);
-        });
-      });
+ $(function(){
+    $('form').submit(function(event){
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/notes', values);
 
+      posting.done(function(data) {
+        var note = data["note"];
+        var newNote = '<h4> Note: ' + note['name'] + '</h4>';
+        newNote += '<p>' + note['content'] + '</p>';
+        $('.notebookNoteSection').append(newNote);
+      });
+      $("form").trigger("reset");
     });
 
-    function Note (name, content){
-      this.name = name;
-      this.content = content;
-      this.showNote = function(){
-        console.log("You created a new note " + this.name);
-      }
-    };
-
-
-
-  $(function () {
-    $(".js-more").on('click', function() {
-      // get the id from the data attribute
-      var id = $(this).data("id");
-      $.get("/notes/" + id + "/content", function(data) {
-        // alert(data);
-        $("#content-" + id).text(data);
-      });
-    });
   });
 
-  </script>
+</script>

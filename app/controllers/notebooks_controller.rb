@@ -14,7 +14,12 @@ class NotebooksController < ApplicationController
   end
 
   def show
-    @note = Note.new
+    @notebook.notes.build
+    respond_to do |format|
+      format.html {render :show}
+      format.json { render json: @notes}
+    end
+
   end
 
   def new
@@ -32,6 +37,7 @@ class NotebooksController < ApplicationController
     @notebook = Notebook.new(notebook_params)
     @notebook.user_id = current_user.id
     if @notebook.save
+      @notebook.note.save
       flash[:success] = "Notebook created!"
       redirect_to notebook_path(@notebook)
     else
