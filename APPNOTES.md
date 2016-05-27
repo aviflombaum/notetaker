@@ -104,7 +104,8 @@ jquery assessment
 
 4) Must have at least one link that loads, or updates a resource without reloading the page. notes/show X https://learn.co/tracks/full-stack-web-development/rails-and-javascript/building-apis/returning-strings-lab
 
-5) Must translate the JSON responses into Javascript Model Objects. The Model Objects must have at least one method on the prototype. Formatters work really well for this.
+5) Must translate the JSON responses into Javascript Model Objects. X
+The Model Objects must have at least one method on the prototype. Formatters work really well for this.
 
 
 MAKING A NEW NOTE
@@ -122,27 +123,3 @@ testNote.name
 "testnote"
 testNote.content
 "testcontent"
-
-function createJob(){
-  $(document).on('click', '#create-job', function(event){
-    event.preventDefault();
-    var url = window.location.pathname.slice(0, -3);
-    $.post(url, $('form').serialize()
-      ).done(function(data){
-        var job = data['job'];
-        var str = '<li>Mechanic: ' + job['mechanic']['name'] + '</li>';
-        str += '<li>Customer: ' + job['customer']['name'] + '</li>';
-        str += '<li>Work Orders:<ul>';
-        job['work_orders'].forEach(function(order){
-          str += '<li>Description: ' + order['description'] + '</li>';
-          str += '<li>Price: $' + order['price'] + '</li>';
-        });
-        str += '</ul></li>';
-        $('#new-ajax-jobs').append(str);
-        $('input[type=text]').val('');
-      });
-  });
-}
-
-
-<h4 class="noteName"> <%= note.id %>: <%= link_to note.name, note_path(note)%></h4>

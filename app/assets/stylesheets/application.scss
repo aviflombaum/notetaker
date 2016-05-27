@@ -24,10 +24,10 @@
 
  $primary-light: #CCD1D9; //light-gray
  $primary-medium: #AAB2BD; //medium-gray
- $accent: #3F51B5; //indigo
+ $accent: #6799FF; //blue
  $primary: #9E9E9E; //gray
  $toggleColor: #FAFAFA;
-
+ $accent-red: #EA4335;
 
 @mixin title-style {
   font-family: $display-font;
@@ -68,14 +68,25 @@ ul {
 .btn {
   border-color: $accent;
   color: $accent;
+  :hover {
+
+  }
 }
 
 button {
-  border-color: $accent;
+  border-color: white;
   color: $accent;
   background-color: white;
-  border-radius: 5px;
+  border: 0
 }
+
+.btn:hover{
+  background-color: $accent;
+  border-color: $accent;
+  color: white;
+}
+
+
 
 // PATTERNS //
 .right {

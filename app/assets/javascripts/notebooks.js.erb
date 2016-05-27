@@ -31,18 +31,71 @@ $(document).ready(function() {
     $parent_box.find('.my-references-bottom').toggle();
   });
 
-
-
-
-$(function () {
+// More button - notebooks/note
   $(".js-more").on('click', function() {
-    // get the id from the data attribute
     var id = $(this).data("id");
     $.get("/notes/" + id + "/content", function(data) {
-      // alert(data);
       $("#content-" + id).text(data);
     });
+
+    $(this).addClass("hidden");
+    $(this).next().removeClass("hidden");
+    debugger;
   });
-});
+
+
+// not working -- running more function
+  $(".js-less").on('click', function() {
+    if (content.length > 100) {
+      return content.substring(0, 100);
+    } else {
+      return content;
+    }
+    var id = $(this).data("id");
+    var fullText = $("#content-" + id).text();
+    var shortText = fullText.slice(0, 100);
+
+    $(".js-less").addClass( "hidden")
+    $(this).prev().removeClass("js-less")
+    debugger;
+  });
+
+// Notes form
+  $('form').submit(function(event){
+    event.preventDefault();
+    var values = $(this).serialize();
+    var posting = $.post('/notes', values);
+
+    posting.done(function(data) {
+      var note = data["note"];
+      debugger;
+
+      var newNote = '<h4>' + note.name + '</h4><p>' + note.content + '</p>' ;
+      $('.notebookNoteSection').append(newNote);
+      $('h4:last').addClass('noteName');
+      $('p:last').addClass('noteContent');
+
+    });
+    $("form").trigger("reset");
+  });
+
+  function Note(name, content){
+    this.name = name;
+    this.content = content;
+  }
+
+
+  Note.prototype.shorten = function(reference){
+    this.reference = reference;
+  }
+
+  // function Obj() {
+  //     this.label = "new object";
+  // }
+  //
+  // Obj.prototype.setLabel = function(newLabel) {
+  //     this.label = newLabel;
+  // }
+
 
 });

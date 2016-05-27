@@ -5,10 +5,6 @@
       <h1 class="page-header"><%= @notebook.title %></h1>
       <div class="inline">
         <%= link_to 'Back', notebook_path(@notebook), :class => "btn btn-xs btn-default" %>
-        <% if current_user.id == @notebook.user_id %>
-          <%= link_to 'New Note', new_notebook_note_path(@notebook, @note), :class => "btn btn-xs btn-default" %>
-          <%= link_to "Delete", @notebook, method: :delete, data: {confirm: "Are you sure you want to delete this notebook?"}, :class => "btn btn-xs btn-default" %>
-        <% end %>
       </div>
       <p><%= pluralize(@notebook.reference_count, 'reference') %>  in this notebook</p>
 
@@ -16,9 +12,11 @@
 
     <div class="row notebookNoteSection">
       <% @notebook.notes.each do |note|  %>
-          <h4 class="noteName"> <%= note.id %>: <%= note.name%></h4>
-          <div id="content-<%= note.id %>"> <%=truncate(note.content, length: 100) %></div>
-          <button class='js-more btn' data-id='<%= note.id %>'> More...</button>
+          <h4 class="noteName"> <%= note.name%></h4>
+          <div id="content-<%= note.id %>" class="noteContent"> <%=note.content %></div>
+          <button class='js-more' data-id='<%= note.id %>'> More...</button>
+          <button class='hidden js-less'> Less</button>
+
       <% end %>
 
     </div>
@@ -52,19 +50,7 @@
 
   <script type="text/javascript" charset="UTF-8">
  $(function(){
-    $('form').submit(function(event){
-      event.preventDefault();
-      var values = $(this).serialize();
-      var posting = $.post('/notes', values);
 
-      posting.done(function(data) {
-        var note = data["note"];
-        var newNote = '<h4> Note: ' + note['name'] + '</h4>';
-        newNote += '<p>' + note['content'] + '</p>';
-        $('.notebookNoteSection').append(newNote);
-      });
-      $("form").trigger("reset");
-    });
 
   });
 
