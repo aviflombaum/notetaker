@@ -8,7 +8,11 @@ class ReferencesController < ApplicationController
 
   def show
     @reference = Reference.find(params[:id])
-
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @reference }
+      # format.json {render json: @reference.to_json }
+    end
   end
 
   def new
@@ -28,10 +32,6 @@ class ReferencesController < ApplicationController
     redirect_to references_path(@reference)
   end
 
-  def reference_data
-    reference = Reference.find(params[:id])
-    render json: ReferenceSerializer.serialize(reference)
-  end
 
   private
 

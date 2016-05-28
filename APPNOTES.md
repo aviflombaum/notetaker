@@ -102,7 +102,7 @@ jquery assessment
 
 3) The rails API must reveal at least one has-many relationship in the JSON that is then rendered to the page. notebooks/notes
 
-4) Must have at least one link that loads, or updates a resource without reloading the page. notes/show X https://learn.co/tracks/full-stack-web-development/rails-and-javascript/building-apis/returning-strings-lab
+4) Must have at least one link that loads, or updates a resource without reloading the page. notes/show X and references - next function https://learn.co/tracks/full-stack-web-development/rails-and-javascript/building-apis/returning-strings-lab
 
 5) Must translate the JSON responses into Javascript Model Objects. X
 The Model Objects must have at least one method on the prototype. Formatters work really well for this.
