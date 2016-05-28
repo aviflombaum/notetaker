@@ -20,16 +20,35 @@
 
 
 <script type="text/javascript" charset="UTF-8">
-  $(function(){
-    $('form').submit(function(event){
+    function Reference(referenceLink, name){
+      this.referenceLink = referenceLink;
+      this.name = name;
+      debugger;
+    }
+
+    Reference.prototype.renderReference = function(selector){
+      var link = $('<a>')
+        .attr('href', this.referenceLink)
+        .text(this.name);
+        selector.append(link);
+    }
+
+    function submitForm(){
+    $('form').on('submit', function(event){
+      // take data below and turn into object with properties
+      var refName = $('#ref-name').val();
+      var refLink = $('#ref-link').val();
+
+      createReference(refName, refLink);
       event.preventDefault();
-      var values = $(this).serialize();
-      var posting = $.post('/references', values);
-      posting.done(function(data) {
-        var reference = data["reference"];
-        $("#referenceName").text(reference["name"]);
-        $("#referenceLink").text(reference["reference_link"]);
-      });
+      debugger;
     });
-  });
+  }
+  //
+  // function handleResponse(response) {
+  //   var issue = new Issue(response.html_url, response.title, response.body)
+  //   issue.renderIssue($('#issue'));
+  // }
+
+
 </script>

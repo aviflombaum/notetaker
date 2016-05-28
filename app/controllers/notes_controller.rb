@@ -10,10 +10,10 @@ class NotesController < ApplicationController
     end
   end
 
-  # I don't remember what this does...
-  def content
+  def note_data
     note = Note.find_by(id: params[:id])
-    render plain: note.content
+    render json: NoteController.serialize(note)
+
   end
 
 

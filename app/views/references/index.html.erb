@@ -3,41 +3,93 @@
   <h1 article-heading>Reference Articles</h1>
   <ul>
     <% @references.each do |ref| %>
-    <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
+    <li><%= ref.id%> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
     <% end %>
   </ul>
 
 
+  <h2 class="text-center page-header">New Reference</h2>
+  <%= form_for(@reference) do |f| %>
+    <div class="form-group">
+      <%= f.label :name, :class => "control-label" %>
+      <%= f.text_field :name, :class => "form-control", :id => "ref-name"  %>
+    </div>
 
-  <%= render 'form' %>
+    <div class="form-group">
+      <%= f.label :reference_link, :class => "control-label" %>
+      <%= f.text_field :reference_link, :class => "form-control", :id => "ref=link"  %>
+    </div>
+
+    <%= f.submit "Submit", :class => "btn btn-default" %>
+  <% end %>
+
+  <div id="referenceResult">
+    <h2 id="referenceName"></h2>
+    <p id="referenceLink"></p>
+  </div>
+
+
+
 </div>
 
 
-<div id="referenceResult">
-  <h2 id="referenceName"></h2>
-  <p id="referenceLink"></p>
-</div>
 
 
-<script type="text/javascript" charset="UTF-8">
-  $(function(){
-    $('form').submit(function(event){
-      debugger;
+
+<!-- <script type="text/javascript" charset="UTF-8">
+$(function(){
+
+    function Reference(referenceLink, name){
+      this.referenceLink = referenceLink;
+      this.name = name;
+    }
+
+    Reference.prototype.renderReference = function(selector){
+      var link = $('<a>')
+        .attr('href', this.referenceLink)
+        .text(this.name);
+        selector.append(link);
+    }
+
+    $('form').on('submit', function(event){
+      // take data below and turn into object with properties
+      var refName = $('#ref-name').val();
+      var refLink = $('#ref-link').val();
+
+      createReference(refName, refLink);
       event.preventDefault();
-      var values = $(this).serialize();
-      var posting = $.post('/references', values);
-      posting.done(function(data) {
-        var reference = data["reference"];
-        $("#referenceName").text(reference["name"]);
-        $("#referenceLink").text(reference["reference_link"]);
-      });
     });
-  });
 
+    function createReference(refName, refLink) {
 
-  function Reference (name, link) {
-    this.name = name;
-    this.reference_link = link;
+    }
+
+    function createIssue(repoName, repoOwner, title, body){
+  var url = interactor.apiBaseUrl + repoOwner + "/" + repoName + "/issues";
+  var data = {
+    title: title,
+    body: body
   }
+  $.ajax({
+    type: "POST",
+    url: url,
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader("Authorization", "token " + interactor.token);
+    },
+    data: JSON.stringify(data)
+  })
+  .done(handleResponse)
+  .fail(handleError);
+}
+
+
+
+
+  //
+  // function handleResponse(response) {
+  //   var issue = new Issue(response.html_url, response.title, response.body)
+  //   issue.renderIssue($('#issue'));
+  // }
+});
 </script>
-<!--   to make it append to the ul -->
+     -->

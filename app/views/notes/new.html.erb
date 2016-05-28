@@ -1,24 +1,2 @@
 <h2 class="text-center page-header">New Note</h2>
 <%= render partial: 'form', locals: {note: @note} %>
-
-
-<div id="noteResult">
-  <h2 id="noteName"></h2>
-  <p id="noteContent"></p>
-</div>
-
-
-<script type="text/javascript" charset="UTF-8">
-  $(function(){
-    $('form').submit(function(event){
-      event.preventDefault();
-      var values = $(this).serialize();
-      var posting = $.post('/notes', values);
-      posting.done(function(data) {
-        var note = data["note"];
-        $("#noteName").text(note["name"]);
-        $("#noteContent").text(note["content"]);
-      });
-    });
-  });
-</script>

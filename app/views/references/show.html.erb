@@ -1,9 +1,23 @@
 <div class="col-md-10 col-md-offset-1" >
   <div class="row">
-    <h1 class="page-header"><%= link_to @reference.name, url_with_protocol(@reference.reference_link), target: :blank %></h1>
+    <h1 class="page-header referenceName"><%= link_to @reference.name, url_with_protocol(@reference.reference_link), target: :blank %></h1>
     <div class="inline">
       <%= link_to 'Back', references_path(@references), :class => "btn btn-small btn-default" %>
       <%= link_to "Delete", @reference, method: :delete, data: {confirm: "Are you sure you want to delete this Reference?"}, :class => "btn btn-small btn-default" %>
     </div>
   </div>
+
+  <a href="#" class="js-next" data-id="<%=@reference.id%>">Next...</a>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get("/references/" + nextId + "/reference_data", function(data) {
+      $(".referenceName").text(data["name"]);
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
+});
+</script>

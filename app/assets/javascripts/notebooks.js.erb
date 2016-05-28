@@ -34,13 +34,13 @@ $(document).ready(function() {
 // More button - notebooks/note
   $(".js-more").on('click', function() {
     var id = $(this).data("id");
-    $.get("/notes/" + id + "/content", function(data) {
-      $("#content-" + id).text(data);
+    $.get("/notes/" + id + "/note_data", function(data) {
+      $("#content-" + id).html(data["content"])
     });
 
-    $(this).addClass("hidden");
-    $(this).next().removeClass("hidden");
-    debugger;
+    // $(this).addClass("hidden");
+    // $(this).next().removeClass("hidden");
+    // debugger;
   });
 
 
