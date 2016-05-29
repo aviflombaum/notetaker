@@ -23,8 +23,6 @@
   </div>
 
 
-
-
 <!--  NOTES FORM -->
   <%= form_for @notebook.notes.build do |f| %>
     <%= f.hidden_field(:notebook_id) %>
@@ -48,8 +46,34 @@
   <% end %>
 
 
-  <script type="text/javascript" charset="UTF-8">
- $(function(){
+<script type="text/javascript" charset="UTF-8">
+  $(function(){
+    function Note(name, content){
+      this.name = name;
+      this.content = content;
+  }
+
+  Note.prototype.format = function(){
+      this.name = '<h4>' + this.name + '</h4>';
+      this.content = '<p>' + this.content + '</p>';
+      $('.notebookNoteSection').append(note);
+      $('.notebookNoteSection h4:last').append(note.name)
+      $('.notebookNoteSection div:last').append(note.content);
+      $('.notebookNoteSection h4:last').addClass('noteName');
+      $('.notebookNoteSection p:last').addClass('noteContent');
+    }
+
+    $('form').submit(function(event){
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/notes', values);
+
+      posting.done(function(data) {
+        note = new Note (data["note"]["name"], data["note"]["content"]);
+        note.format();
+        $("form").trigger("reset");
+      });
+    });
 
 
   });

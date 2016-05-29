@@ -123,3 +123,15 @@ testNote.name
 "testnote"
 testNote.content
 "testcontent"
+
+
+
+// this.reference = reference;
+//
+// // var newNote = '<h4>' + note.name + '</h4><p>' + note.content + '</p>' ;
+// $('.notebookNoteSection').append(newNote);
+// $('h4:last').addClass('noteName');
+// $('p:last').addClass('noteContent');
+
+
+// $("form").trigger("reset");

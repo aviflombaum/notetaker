@@ -61,33 +61,7 @@ $(document).ready(function() {
   });
 
 // Notes form
-  $('form').submit(function(event){
-    event.preventDefault();
-    var values = $(this).serialize();
-    var posting = $.post('/notes', values);
-
-    posting.done(function(data) {
-      var note = data["note"];
-      debugger;
-
-      var newNote = '<h4>' + note.name + '</h4><p>' + note.content + '</p>' ;
-      $('.notebookNoteSection').append(newNote);
-      $('h4:last').addClass('noteName');
-      $('p:last').addClass('noteContent');
-
-    });
-    $("form").trigger("reset");
-  });
-
-  function Note(name, content){
-    this.name = name;
-    this.content = content;
-  }
-
-
-  Note.prototype.shorten = function(reference){
-    this.reference = reference;
-  }
+  
 
   // function Obj() {
   //     this.label = "new object";

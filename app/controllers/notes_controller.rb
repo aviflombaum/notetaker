@@ -10,13 +10,6 @@ class NotesController < ApplicationController
     end
   end
 
-  def note_data
-    note = Note.find_by(id: params[:id])
-    render json: NoteController.serialize(note)
-
-  end
-
-
    def show
      respond_to do |format|
        format.html { render :show }
