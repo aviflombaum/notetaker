@@ -19,12 +19,10 @@ class NotebooksController < ApplicationController
       format.html {render :show}
       format.json { render json: @notes}
     end
-
   end
 
   def new
     @notebook = Notebook.new
-    @note = @notebook.notes.build
   end
 
   def edit
@@ -65,7 +63,7 @@ class NotebooksController < ApplicationController
     private
 
       def notebook_params
-        params.require(:notebook).permit(:title, notes_attributes: [:id, :name, :content])
+        params.require(:notebook).permit(:title, notes_attributes: [:id, :name, :content, :reference_id])
       end
 
       def set_notebook

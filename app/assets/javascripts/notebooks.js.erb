@@ -1,4 +1,33 @@
-$(document).ready(function() {
+  $(function(){
+
+
+    function Note(name, content, referenceName, referenceLink){
+      this.name = name;
+      this.content = content + referenceName + referenceLink;
+      this.referenceName = referenceName;
+      this.referenceLink = referenceLink;
+      // is this the right way to deal with this relationship?
+  }
+
+
+  Note.prototype.format = function(){
+      $('.newNoteName').text(this.name);
+      $('.newNoteContent').text(this.content);
+      // what is the best way to use erb? this.name should actually be a link to the note
+    }
+
+    $('form').submit(function(event){
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/notes', values);
+
+      posting.done(function(data) {
+        note = new Note (data["note"]["name"], data["note"]["content"], data["note"]["reference"]["name"], data["note"]["reference"]["reference_link"]);
+        note.format();
+        $("form").trigger("reset");
+      });
+    });
+
 
 
     $('.show').click(function() {
@@ -59,17 +88,5 @@ $(document).ready(function() {
     $(this).prev().removeClass("js-less")
     debugger;
   });
-
-// Notes form
-  
-
-  // function Obj() {
-  //     this.label = "new object";
-  // }
-  //
-  // Obj.prototype.setLabel = function(newLabel) {
-  //     this.label = newLabel;
-  // }
-
 
 });

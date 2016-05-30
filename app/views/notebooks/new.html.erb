@@ -1,2 +1,10 @@
 <h2 class="text-center page-header">New Notebook</h2>
-<%= render partial: 'form', locals: {notebook: @notebook} %>
+
+<%= form_for(@notebook) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title, :class => "control-label" %>
+    <%= f.text_field :title, :class => "form-control" %>
+  </div>
+  <%= f.submit "Submit", :class => "btn btn-default" %>
+<% end %>

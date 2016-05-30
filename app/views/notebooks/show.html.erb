@@ -1,81 +1,54 @@
+<div class="col-md-10 col-md-offset-1">
+  <div class="row notebookSection">
+    <h2 class="page-header"><%= @notebook.title %></h2>
+    <div class="inline">
+      <% link_to 'Back', [@notebook], :class => "btn btn-xs btn-default" %>
+    </div>
+    <p><%= pluralize(@notebook.reference_count, 'reference') %>  in this notebook</p>
+  </div>
 
-
-  <div class="col-md-10 col-md-offset-1">
-    <div class="row notebookSection">
-      <h1 class="page-header"><%= @notebook.title %></h1>
-      <div class="inline">
-        <%= link_to 'Back', notebook_path(@notebook), :class => "btn btn-xs btn-default" %>
+  <div class="row notebookNoteSection">
+    <% @notebook.notes.each do |note|  %>
+    <div class="col-md-4 padding-bottom">
+      <div class="panel panel-default text-center">
+        <h4 class="noteName"> <%=link_to note.name, [@notebook, note]%></h4>
+        <div id="content-<%= note.id %>" class="noteContent"> <%=note.content %></div>
+        <button class='js-more' data-id='<%= note.id %>'> More...</button>
+        <button class='hidden js-less'> Less</button>
       </div>
-      <p><%= pluralize(@notebook.reference_count, 'reference') %>  in this notebook</p>
-
     </div>
+    <% end %>
+    <div class="col-md-4 padding-bottom ">
+      <div class="panel panel-default text-center">
+        <h4 class="newNoteName "></h4>
+        <p class="newNoteContent ">
+      </div>
+    </div>
+    </p>
+  </div>
 
-    <div class="row notebookNoteSection">
-      <% @notebook.notes.each do |note|  %>
-          <h4 class="noteName"> <%= note.name%></h4>
-          <div id="content-<%= note.id %>" class="noteContent"> <%=note.content %></div>
-          <button class='js-more' data-id='<%= note.id %>'> More...</button>
-          <button class='hidden js-less'> Less</button>
+  <div class="form">
+    <h2 class="page-header">Add a Note to <%= @notebook.title %></h2>
+      <%= form_for @notebook.notes.build, :remote => true, :html => {:'data-type' => 'json'} do |f| %>
+        <%= f.hidden_field(:notebook_id) %>
+        <div class="form-group">
+          <%= f.label :reference_link, :class => "control-label" %>
+          <%= f.select :reference_id, Reference.all.collect { |r| [r.name, r.id]}, include_blank: :true, :class => "form-control" %>
+        </div>
 
+        <div class="form-group">
+          <%= f.label :name, :class => "control-label" %>
+          <%= f.text_field :name, :class => "form-control", :id => "name" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :content, :class => "control-label" %>
+          <%= f.text_area :content, :class => "form-control", :id=> "content" %>
+        </div>
+
+        <%= f.submit "Submit", :class => "btn btn-default" %>
       <% end %>
-
-    </div>
   </div>
 
 
-<!--  NOTES FORM -->
-  <%= form_for @notebook.notes.build do |f| %>
-    <%= f.hidden_field(:notebook_id) %>
-    <div class="form-group">
-      <%= f.label :reference_link, :class => "control-label" %>
-      <%= f.select :reference_id, Reference.all.collect { |r| [r.reference_link, r.id]}, include_blank: :true, :class => "form-control" %>
-    </div>
-
-
-    <div class="form-group">
-        <%= f.label :name, :class => "control-label" %>
-        <%= f.text_field :name, :class => "form-control", :id => "name" %>
-    </div>
-
-    <div class="form-group">
-        <%= f.label :content, :class => "control-label" %>
-        <%= f.text_area :content, :class => "form-control", :id=> "content" %>
-    </div>
-
-    <%= f.submit "Submit", :class => "btn btn-default" %>
-  <% end %>
-
-
-<script type="text/javascript" charset="UTF-8">
-  $(function(){
-    function Note(name, content){
-      this.name = name;
-      this.content = content;
-  }
-
-  Note.prototype.format = function(){
-      this.name = '<h4>' + this.name + '</h4>';
-      this.content = '<p>' + this.content + '</p>';
-      $('.notebookNoteSection').append(note);
-      $('.notebookNoteSection h4:last').append(note.name)
-      $('.notebookNoteSection div:last').append(note.content);
-      $('.notebookNoteSection h4:last').addClass('noteName');
-      $('.notebookNoteSection p:last').addClass('noteContent');
-    }
-
-    $('form').submit(function(event){
-      event.preventDefault();
-      var values = $(this).serialize();
-      var posting = $.post('/notes', values);
-
-      posting.done(function(data) {
-        note = new Note (data["note"]["name"], data["note"]["content"]);
-        note.format();
-        $("form").trigger("reset");
-      });
-    });
-
-
-  });
-
-</script>
+</div>

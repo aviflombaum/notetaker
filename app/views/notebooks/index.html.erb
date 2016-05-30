@@ -14,43 +14,40 @@
     <% end %>
   </div>
 
-  <div class="container">
-      <div class="row ">
-        <h2 class="text-center page-header " Your Articles</h2>
-        <ul>
-          <% @my_refs.each do |ref| %>
-            <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="row">
-          <h2 class="text-center page-header">Recently Added Articles</h2>
-          <ul>
-            <% @references.recently_added.each do |ref| %>
-              <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
-            <% end %>
-          </ul>
-      </div>
+  <div class="row">
+    <h2 class="text-center page-header"> Your Articles</h2>
+    <ul>
+      <% @my_refs.each do |ref| %>
+        <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
+      <% end %>
+    </ul>
   </div>
 
-    <div class="row">
-      <div class="reports">
-        You have <%= pluralize(current_user.notebook_count, 'notebook') %>
-        You have <%= pluralize(current_user.note_count, 'note') %>
-      </div>
-    </div>
-
-    <h1>Descending order for notes</h1>
-    <div class="row">
-        <ul>
-          <% Notebook.order_notebooks.each do |notebook| %>
-            <li> <%= notebook.title %> = <%= notebook.note_count %> </li>
-          <% end %>
-        </ul>
-    </div>
-    </div>
-
-
-
+  <div class="row">
+      <h2 class="text-center page-header">Recently Added Articles</h2>
+      <ul>
+        <% @references.recently_added.each do |ref| %>
+          <li> <%= link_to ref.name, url_with_protocol(ref.reference_link), target: :blank %> </li>
+        <% end %>
+      </ul>
   </div>
+
+  <div class="row">
+    <div class="reports">
+      You have <%= pluralize(current_user.notebook_count, 'notebook') %>
+      You have <%= pluralize(current_user.note_count, 'note') %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h2 class="text-center page-header">Descending order for notes</h2>
+      <ul>
+        <% Notebook.order_notebooks.each do |notebook| %>
+          <li> <%= notebook.title %> = <%= notebook.note_count %> </li>
+        <% end %>
+      </ul>
+  </div>
+  </div>
+
+
+</div>
