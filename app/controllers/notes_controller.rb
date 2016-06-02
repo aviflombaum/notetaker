@@ -11,8 +11,7 @@ class NotesController < ApplicationController
   end
 
    def show
-     @next_note = Note.next_note
-     binding.pry
+     @next_note = Note.where("id > '#{@note.id}'").limit(1)
      respond_to do |format|
        format.html { render :show }
        format.json { render json: @note }
@@ -20,10 +19,9 @@ class NotesController < ApplicationController
    end
 
    def next
-     binding.pry
-    #  @next_note = Note.find_next(@note)
-     @next_note = Note.next_note
+     @next_note = Note.where("id > '#{@note.id}'").limit(1)
    end
+
    def body
      note = Note.find(params[:id])
      render plain: note.content

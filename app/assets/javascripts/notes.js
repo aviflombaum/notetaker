@@ -1,6 +1,6 @@
 $(function () {
   $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    var nextId = ; // get id from @next_note
     $.get("/notes/" + nextId + ".json", function(data) {
       var note = data["note"];
       $(".noteName").text(note["name"]);
