@@ -10,37 +10,16 @@
     </div>
     <h5>Notebook <%= @note.id %>: <%= @note.notebook.title %>  </h5>
     <% if @note.reference != nil %>
-      <h5> Reference: <%= @note.reference.name %> </h5>
+      <h5> Reference: <%= @note.reference.name %>  - <%= @note.reference.reference_link %></h5>
     <% end %>
     <!-- <p> <%#= simple_format(@note.content)%> </p> -->
-    <div class="noteContent" id="content-<%= @note.id %>"> <%= simple_format(@note.content) %></div>
-    <button class='js-more' data-id='<%= @note.id %>'> More...</button>
+    <div class="noteContent" id="content-<%= @note.id %>">
+      <p>
+        <%= simple_format(@note.content) %></div>
+      </p>
+    </div>
 
-  </div>
-
+  <a href="/notes/next" class="js-next" data-id="<%=@note.id%>">Next</a>
 </div>
 
-
-
-<!--  -->
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  $(".js-more").on('click', function() {
-    // get the id from the data attribute
-    var id = $(this).data("id");
-    $.get("/notes/" + id + "/content", function(data) {
-      // alert(data);
-      $("#content-" + id).text(data);
-    });
-    $("button").addClass("hidden");
-    // Add show less button
-  });
-
-
-});
-
-
-
-</script>
-
-<!--  -->
+</div>

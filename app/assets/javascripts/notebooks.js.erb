@@ -3,20 +3,25 @@
 
     function Note(name, content, referenceName, referenceLink){
       this.name = name;
-      this.content = content + referenceName + referenceLink;
+      this.content = content;
       this.referenceName = referenceName;
       this.referenceLink = referenceLink;
-      // is this the right way to deal with this relationship?
   }
+  // is this the right way to deal with the notes/references relationship? do I care?
+
 
 
   Note.prototype.format = function(){
+
+      $('.newPanel').removeClass('hidden');
       $('.newNoteName').text(this.name);
       $('.newNoteContent').text(this.content);
-      // what is the best way to use erb? this.name should actually be a link to the note
-    }
 
-    $('form').submit(function(event){
+    }
+    // what is the best way to use erb? this.name should actually be a link to the note
+
+
+    $('form.new_note').submit(function(event){
       event.preventDefault();
       var values = $(this).serialize();
       var posting = $.post('/notes', values);
@@ -26,67 +31,39 @@
         note.format();
         $("form").trigger("reset");
       });
-    });
+    // });
 
 
-
-    $('.show').click(function() {
-       $('.notebook-details').toggle();
-    });
-
-    $('.noteName').click(function() {
-       $('.noteContent').toggle();
-    });
-
-    $(".panel").hover(function(){
-      $(this).addClass("panelHover")
-    }, function(){
-      $(this).removeClass("panelHover")
-
-    }
-  );
-
-
-// SHOW/HIDE
-  $('.all-references-top').on('click', function() {
-	   $parent_box = $(this).closest('.all-references');
-	   $parent_box.siblings().find('.all-references-bottom').hide();
-	   $parent_box.find('.all-references-bottom').toggle();
-  });
-
-  $('.my-references-top').on('click', function() {
-    $parent_box = $(this).closest('.my-references');
-    $parent_box.siblings().find('.my-references-bottom').hide();
-    $parent_box.find('.my-references-bottom').toggle();
-  });
 
 // More button - notebooks/note
-  $(".js-more").on('click', function() {
-    var id = $(this).data("id");
-    $.get("/notes/" + id + "/note_data", function(data) {
-      $("#content-" + id).html(data["content"])
-    });
+  // $(".js-more").on('click', function() {
+  //   var id = $(this).data("id");
+  //   $.get("/notes/" + id + "/content", function(data) {
+  //     $("#content-" + id).html(data["content"])
+  //   });
+  //
+  // });
 
-    // $(this).addClass("hidden");
-    // $(this).next().removeClass("hidden");
-    // debugger;
+// Index
+  $('.show').click(function() {
+     $('.notebook-details').toggle();
   });
 
-
-// not working -- running more function
-  $(".js-less").on('click', function() {
-    if (content.length > 100) {
-      return content.substring(0, 100);
-    } else {
-      return content;
-    }
-    var id = $(this).data("id");
-    var fullText = $("#content-" + id).text();
-    var shortText = fullText.slice(0, 100);
-
-    $(".js-less").addClass( "hidden")
-    $(this).prev().removeClass("js-less")
-    debugger;
+  $('.noteName').click(function() {
+     $('.noteContent').toggle();
   });
+
+  $(".panel").hover(function(){
+    $(this).addClass("panelHover")
+  }, function(){
+    $(this).removeClass("panelHover")
+
+  });
+
 
 });
+
+
+// problems
+  // not sure where the notebooks/26/notes is coming from
+  //

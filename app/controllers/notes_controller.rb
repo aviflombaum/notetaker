@@ -11,10 +11,22 @@ class NotesController < ApplicationController
   end
 
    def show
+     @next_note = Note.next_note
+     binding.pry
      respond_to do |format|
        format.html { render :show }
        format.json { render json: @note }
      end
+   end
+
+   def next
+     binding.pry
+    #  @next_note = Note.find_next(@note)
+     @next_note = Note.next_note
+   end
+   def body
+     note = Note.find(params[:id])
+     render plain: note.content
    end
 
   def new

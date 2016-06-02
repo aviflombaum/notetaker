@@ -1,10 +1,7 @@
 <div class="col-md-10 col-md-offset-1">
   <div class="row notebookSection">
-    <h2 class="page-header"><%= @notebook.title %></h2>
-    <div class="inline">
-      <% link_to 'Back', [@notebook], :class => "btn btn-xs btn-default" %>
-    </div>
-    <p><%= pluralize(@notebook.reference_count, 'reference') %>  in this notebook</p>
+    <h2 class="page-header text-center"><%= @notebook.title %></h2>
+    <p class="text-center"><%= pluralize(@notebook.reference_count, 'reference') %>  in this notebook</p>
   </div>
 
   <div class="row notebookNoteSection">
@@ -12,14 +9,13 @@
     <div class="col-md-4 padding-bottom">
       <div class="panel panel-default text-center">
         <h4 class="noteName"> <%=link_to note.name, [@notebook, note]%></h4>
-        <div id="content-<%= note.id %>" class="noteContent"> <%=note.content %></div>
-        <button class='js-more' data-id='<%= note.id %>'> More...</button>
-        <button class='hidden js-less'> Less</button>
+        <div id="content-<%= note.id %>" class="noteContent"> <%=truncate(note.content, length: 75) %></div>
       </div>
     </div>
     <% end %>
+
     <div class="col-md-4 padding-bottom ">
-      <div class="panel panel-default text-center">
+      <div class="panel panel-default text-center newPanel hidden ">
         <h4 class="newNoteName "></h4>
         <p class="newNoteContent ">
       </div>
@@ -28,8 +24,8 @@
   </div>
 
   <div class="form">
-    <h2 class="page-header">Add a Note to <%= @notebook.title %></h2>
-      <%= form_for @notebook.notes.build, :remote => true, :html => {:'data-type' => 'json'} do |f| %>
+    <h2 class="page-header text-center">Add a Note to <%= @notebook.title %></h2>
+      <%= form_for @notebook.notes.build do |f| %>
         <%= f.hidden_field(:notebook_id) %>
         <div class="form-group">
           <%= f.label :reference_link, :class => "control-label" %>

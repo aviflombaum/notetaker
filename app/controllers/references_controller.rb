@@ -8,12 +8,21 @@ class ReferencesController < ApplicationController
 
   def show
     @reference = Reference.find(params[:id])
+    @next_reference = Reference.find_by_sql("SELECT * FROM references where id > @reference LIMIT 1")
+
+
     respond_to do |format|
       format.html {render :show}
       format.json {render json: @reference }
       # format.json {render json: @reference.to_json }
     end
   end
+
+
+  # def next  # /resources/next
+  #   @next_reference = Reference.find_next(@reference)
+  #
+  # end
 
   def new
     @reference = Reference.new
